@@ -8,7 +8,7 @@
 <ul>
 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) : the_post(); ?>
-                        <?php include (TEMPLATEPATH . '/parts/c-archive.php'); ?>
+                        <?php include (TEMPLATEPATH . '/parts/archive.php'); ?>
                     <?php endwhile; ?>
             <?php else : ?>
                     <h3><?php _e('No Post Found', 'cmeasytheme'); ?></h3>

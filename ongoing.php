@@ -29,7 +29,7 @@ $wp_query = new WP_Query();
 $wp_query->query($myposts);
 ?>
 <?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?> 
-<?php include (TEMPLATEPATH . '/parts/c-archive.php'); ?>
+<?php include (TEMPLATEPATH . '/parts/archive.php'); ?>
 <?php endwhile; ?>
 </ul>
 

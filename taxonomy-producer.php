@@ -24,7 +24,7 @@ $fix = strtolower($nama);
 // The Query
 $query = new WP_Query( $args );
         if($query->have_posts()):while($query->have_posts()):$query->the_post(); ?>
-              <?php include (TEMPLATEPATH . '/parts/c-archive.php'); ?>
+              <?php include (TEMPLATEPATH . '/parts/archive.php'); ?>
    <?php
 
         endwhile;
