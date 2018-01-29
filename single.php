@@ -1,18 +1,22 @@
 <?php get_header(); ?>
-
-<div class="venser">
+<div class="venser-watch">
 <div class="venutama">
-
 <div class='breadcrumbs'>
 <?php if ( function_exists('yoast_breadcrumb') ) {
 yoast_breadcrumb('<div id="breadcrumbs">','</div>');
 } ?></div>
 
 <div class='jdlr'><h1><?php the_title(); ?></div>
+<?php
+$nilai = $_SERVER['REQUEST_URI'];
+$exp=explode('?',$nilai);
+$nama = $exp[1];
+$namabaru = str_replace("-"," ", $nama);
+?>
+<div class='jdlr'><h1><?php echo the_title()." ".$namabaru; ?></div>
 
 <?php get_template_part('parts/single-watch'); ?>
 <div class="clear"></div>
-<?php get_template_part('parts/c-info'); ?>
 <?php get_template_part('parts/related'); ?>
 
 
@@ -27,6 +31,8 @@ yoast_breadcrumb('<div id="breadcrumbs">','</div>');
 </div>
 </div>
 </div>
+<?php get_sidebar(); ?>
 </div>
+
 
 <?php get_footer(); ?>
