@@ -10,9 +10,9 @@ $namabaru = str_replace("-"," ", $nama);
 ?>
 <div class='jdlr'><h1><?php echo the_title()." ".$namabaru; ?></div>
 
-<?php get_template_part('parts/c-single'); ?>
+<?php get_template_part('parts/single-watch'); ?>
 <div class="clear"></div>
-<?php get_template_part('parts/c-related'); ?>
+<?php get_template_part('parts/related'); ?>
 
 
 

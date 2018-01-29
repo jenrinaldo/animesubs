@@ -10,10 +10,10 @@ yoast_breadcrumb('<div id="breadcrumbs">','</div>');
 
 <div class='jdlr'><h1><?php the_title(); ?></div>
 
-<?php get_template_part('parts/c-single'); ?>
+<?php get_template_part('parts/single-watch'); ?>
 <div class="clear"></div>
 <?php get_template_part('parts/c-info'); ?>
-<?php get_template_part('parts/c-related'); ?>
+<?php get_template_part('parts/related'); ?>
 
 
 

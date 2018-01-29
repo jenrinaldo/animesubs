@@ -8,7 +8,7 @@ $current_fp = get_query_var('fpage'); ?>
 <?php  if ($current_fp == 'watch') {
 			get_template_part('watch');
 			} else { ?>
-            <?php get_template_part('parts/c-dbanime'); ?>
+            <?php get_template_part('parts/dbanime'); ?>
             </div>
 <?php }; ?>
 

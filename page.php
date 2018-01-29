@@ -8,7 +8,7 @@ yoast_breadcrumb('<div id="breadcrumbs">','</div>');
 } ?></div>
 
 <div class='jdlr'><h1><?php the_title(); ?></div>
-<?php get_template_part('parts/c-page'); ?>
+<?php get_template_part('parts/pages'); ?>
 <div class="clear"></div>
 
 <div class="commentarea">
