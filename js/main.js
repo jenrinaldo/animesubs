@@ -3,7 +3,7 @@ jQuery("#smoke-myanimelist-api-generate")
     .on("click", function () {
         if (jQuery("#smoke-myanimelist-api").val().length > 0) {
             jQuery
-                .getJSON("/wp-content/themes/c-fanshare/api.php", {
+                .getJSON("/wp-content/themes/animesubs/api.php", {
                     url: jQuery("#smoke-myanimelist-api").val()
                 }, function (data) {
                     jQuery("#tw_thumbnail").val(data.image);
@@ -26,7 +26,7 @@ jQuery("#smoke-myanimelist-api-generate")
 jQuery("#smoke-gogoanime-api-generate").on("click", function () {
     if (jQuery("#smoke-gogoanime-api").val().length > 0) {
         jQuery
-            .getJSON("/wp-content/themes/c-fanshare/gogoanime.php", {
+            .getJSON("/wp-content/themes/animesubs/gogoanime.php", {
                 urll: jQuery("#smoke-gogoanime-api").val()
             }, function (data) {
                 jQuery

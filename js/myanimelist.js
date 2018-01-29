@@ -1,6 +1,6 @@
 jQuery("#smoke-myanimelist-api-generate").on("click", function(){
 	if(jQuery("#smoke-myanimelist-api").val().length > 0){
-		jQuery.getJSON("/wp-content/themes/c-fanshare/api.php", {
+		jQuery.getJSON("/wp-content/themes/animesubs/api.php", {
 			url: jQuery("#smoke-myanimelist-api").val()
 		}, function(data){
 			jQuery("#tw_thumbnail").val(data["image"]);

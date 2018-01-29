@@ -1,6 +1,6 @@
 jQuery("#smoke-gogoanime-api-generate").on("click", function(){
 	if(jQuery("#smoke-gogoanime-api").val().length > 0){
-		jQuery.getJSON("/wp-content/themes/c-fanshare/gogoanime.php", {
+		jQuery.getJSON("/wp-content/themes/animesubs/gogoanime.php", {
 			urll: jQuery("#smoke-gogoanime-api").val()
 		}, function(data){
 			jQuery.each(data, function(key, value){
