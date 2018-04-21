@@ -148,6 +148,11 @@ margin: 0;
     line-height: 21px;
     width: 45%;
 }
+.soralist ul li .spekBD {
+    display: inline;
+    font-weight: 400;
+    margin: 0 2px;
+}
 .soralist ul li a.series {
     color: #333;
 }

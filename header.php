@@ -84,127 +84,12 @@
 </div>
 
 <!-- Header End -->
-
-<style>
-.search {
-    position: relative;
-    display: inline-block;
-    margin: auto;
-    min-height: 25px;
-    float: right;
-    padding: 5px;
-}
-input[type=checkbox], input[type=radio] {
-    margin: 0px 0 0;
-    margin-top: 1px\9;
-    line-height: normal;
-}
-input[type=checkbox], input[type=radio] {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 0;
-}
-.search_box {
-    visibility: hidden;
-}
-[class^="icon-"] {
-    background: #b7053f;
-    color: #fff;
-    border-radius: 5px;
-    display: inline-block;
-    padding: 6px 7px 7px;
-    font-size: 16px;
-    text-shadow: 1px 1px 2px #21638F;
-    box-shadow: inset 0px 0px 0px #21638F;
-    transition: all 0.5s ease;
-    -webkit-transition: all 0.5s ease;
-    cursor: pointer;
-    z-index: 10;
-    position: relative;
-}
-.search_box:checked~.search_form {
-    width: 220px;
-    height: 32px;
-    padding: 5px;
-    top: 50px;
-    transition: height 0.2s ease-out, top 0.2s ease-out, padding 0.2s ease-out, 0.3s width ease-out 0.2s;
-    -webkit-transition: height 0.2s ease-out, top 0.2s ease-out, padding 0.2s ease-out, 0.3s width ease-out 0.2s;
-    right:10px;
-}
-.search_form {
-    background: #5dade2;
-    position: absolute;
-    z-index: 0;
-    padding: 0px 5px;
-    right: 0;
-    top: 15px;
-    overflow: hidden;
-    border-radius: 2px;
-    width: 20px;
-    height: 0px;
-    transition: height 0.2s ease-out 0.5s , top 0.2s ease-out 0.5s, padding 0.2s ease-out 0.5s, width 0.3s ease-out 0.2s;
-    -webkit-transition: height 0.2s ease-out 0.5s , top 0.2s ease-out 0.5s, padding 0.2s ease-out 0.5s, width 0.3s ease-out 0.2s;
-}
-.search_box:checked~.search_form form {
-    opacity: 1;
-    transition: 0.3s all ease-out 0.5s;
-    -webkit-transition: 0.3s all ease-out 0.5s;
-}
-.search_form form {
-    opacity: 0;
-    transition: all 0.3s ease-out;
-    -webkit-transition: all 0.3s ease-out;
-}
-.search_form input[type='text'] {
-    border-radius: 2px 0 0 2px;
-    width: 80%;
-    margin: -4px 0 0px -4px;
-    /* padding: 0px 5px 1px; */
-    min-height: 30px;
-    float: left;
-    overflow: hidden;
-}
-.search_form input {
-    background: #fff;
-    border: none;
-}
-.search_form input[type='submit'] {
-    border-radius: 0 2px 2px 0;
-    text-transform: uppercase;
-    font-size: 11px;
-    /* padding: 0px 5px; */
-    min-height: 30px;
-    margin: -4px 0px 0px 0;
-    cursor: pointer;
-    float: right;
-    width: 20%;
-    display: inline-block;
-}
-.searchsubmit{
-    float: right;
-    display: inline-block;
-    min-height: 26px;
-    width: auto;
-    margin: -2px -2px;
-    background: transparent;
-    border: none;
-}
-.search_form input {
-    background: #fff;
-    border: none;
-    float: left;
-    display: inline-block;
-    min-height: 26px;
-    margin: -2px -2px;
-    padding: 0;
-    width: 85%;
-}
-</style>
 				<div class="clear"> </div>
 			</div>
 		</div>	
-
+<!-- Top -->
+<div class="top"><span class="fa fa-rocket"></span></div>
+<!-- End Top -->
 <!-- End Menu -->
 <div id="main-wrapper">
     <div class="anon">Currently under construction</div>
@@ -218,8 +103,16 @@ input[type=checkbox], input[type=radio] {
 			<div class="w3_agile_latest_movies">
 			
 				<div id="owl-demo" class="owl-carousel owl-theme">
-                <?php $recent = array ('post_type' => 'anime','showposts'=> 8,'orderby'=> 'views','order'=> 'DESC',);
-                      $wp_query= null; $wp_query = new WP_Query(); $wp_query->query($recent); while($wp_query->have_posts()) : $wp_query->the_post(); ?>
+                <?php $recent = new WP_Query( array(
+                    'post_type' => 'anime',          // name of post type.
+                    'meta_query' => array(
+                        array(
+                            'key' => 'smoke-status',
+                            'value' => 'Currently Airing',                 // term id, term slug or term name
+                            )
+                            )
+                            ) );
+                      while($recent->have_posts()) : $recent->the_post(); ?>
                       <?php $terms = get_the_terms( $post->ID, 'season' );
                       $term = array_shift( $terms );
                       $nama = "/season/".$term->slug;

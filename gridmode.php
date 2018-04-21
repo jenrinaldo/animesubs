@@ -1,10 +1,7 @@
 <?php wp_reset_postdata();?>
 <?php 
-$meta_embed = get_post_meta( $post->ID, 'smoke_embed', true );
-$meta_embed_length = sizeof($meta_embed);
-$currLength = $meta_embed_length-1;
-$EpsNow = explode(" ",$meta_embed[$currLength]);
-$EpsNum = $EpsNow[1];
+$EpsNum = get_post_meta( $post->ID, 'current-episode', true );
+$cekBD = get_post_meta( $post->ID, 'smoke-bd', true );
 $nama = wp_get_object_terms( $post->ID, 'tipe', array( 'fields' => 'names' ) );
 $nama = array_pop($nama);
 ?>
@@ -42,6 +39,9 @@ Ep. <?php echo $EpsNum ?>
 <li class="category"><b><span class="fa fa-tags"></span> Category : </b> <?php echo get_the_term_list($post->ID, 'genre', '', ', ', ''); ?></li>
 <li class="status"><b><span class="fa fa-info-circle"></span> Status : </b><?php echo get_post_meta( $post->ID, 'smoke-status', true );?></li>
 <li class="series"><b><span class="fa fa-th-list"></span> Series : </b> <?php echo get_the_term_list($post->ID,'series','','<span class="batasanseries">|</span>',''); ?></li>
+<?php if($cekBD!=''){
+  echo  '<li class="statusBD"><span>BD</span></li>';
+}?>
 </ul>
 </div>
 </div>	

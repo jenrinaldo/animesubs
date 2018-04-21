@@ -38,6 +38,12 @@ function CukStudio_Meta_Box( $meta_boxes ) {
 		"autosave" => true,
 		"fields" => array(
 			array(
+				'id' => $prefix . 'bd',
+				'name' => esc_html__( 'BD', 'metabox-online-generator' ),
+				'type' => 'checkbox',
+				'desc' => esc_html__( 'BD', 'metabox-online-generator' ),
+			),
+			array(
 				"id" => "Background-Cover",
 				"type" => "heading",
 				"name" => esc_html("Background Cover","cstudio"),
@@ -46,6 +52,11 @@ function CukStudio_Meta_Box( $meta_boxes ) {
 				"id" => $prefix. "bgcover",
 				"type" => "text",
 				"name" => esc_html__( "Background Cover", "cstudio" ),
+			),
+			array(
+				"id" => "current-episode",
+				"type" => "text",
+				"name" => esc_html__( "Episode Sekarang", "cstudio" ),
 			),
 			array(
 				"id" => "alternative-titles",

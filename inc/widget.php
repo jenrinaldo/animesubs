@@ -1,67 +1,4 @@
 <?php 
-// widget top featured anime
-add_action( 'widgets_init', 'featured_widget'); 
-function featured_widget() {
-register_widget( 'featured_widget_info' );
-}
-class featured_widget_info extends WP_Widget { 
-function featured_widget_info () {
-                                $this->WP_Widget('featured_widget_info', 'Featured Anime (C-Studio)', $widget_ops );        } 
-public function form( $instance ) {
-if ( isset( $instance[ 'name' ]) && isset ($instance[ 'total' ]) ) {
-$name = $instance[ 'name' ];
-$total = $instance[ 'total' ];
-}
-else {
-$name = __( '', 'srs_widget_title' );
-$total = __( '', 'srs_widget_title' );
-} ?>
-<p>Title: <input class="widefat" name="<?php echo $this->get_field_name( 'name' ); ?>" type="text" value="<?php echo esc_attr( $name );?>" /></p>
-<?php
-} 
-function update($new_instance, $old_instance) { 
-$instance = $old_instance; 
-$instance['name'] = ( ! empty( $new_instance['name'] ) ) ? strip_tags( $new_instance['name'] ) : ''; 
-$instance['total'] = ( ! empty( $new_instance['total'] ) ) ? strip_tags( $new_instance['total'] ) : ''; 
-return $instance; 
-}  
-function widget($args, $instance) {
-extract($args);
-echo $before_widget;
-$name = apply_filters( 'widget_title', $instance['name'] );
-$total = empty( $instance['total'] ) ? '&nbsp;' : $instance['total'];
-if ( !empty( $name ) ) { echo "<div class='rvad'><h1><span>" . $name . "</span></h1></div>"; };
-echo "<div class='recomx'><ul>";
-$i = 0;$popularpost = new WP_Query( array( 'posts_per_page' => '1', 'post_type' => 'anime', 'orderby' => 'rand'  ) ); while ( $popularpost->have_posts() ) : $popularpost->the_post(); ?>
-<?php $i++ ?>
-<li>
-<div class="zeeb">
-
-<?php if ( has_post_thumbnail() ) { ?>
-<?php the_post_thumbnail('thumb', array( 'title' => get_the_title() )); ?>
-<?php } else { ?>
-<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" />
-<?php } ?>
-
-<h2><a style='color:#333;' href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a> <i style='color:#c74242;' class='fa fa-star'></i> <span style='color:#c74242;'>#<?php $meta = get_post_meta( get_the_ID(), 'smoke-score', true ); echo $meta; ?></span> <span class='watch' style='float:right;color: #fff;background: #2b9dff;padding: 5px;font-size: 13px;'><a href="<?php the_permalink() ?>"><i class='fa fa-play'></i> Watch Now</a> </span></h2>
-<div class='is'>
-<span style='color: #fff;background: #ff6f2b;padding: 4px;font-size: 13px;'><?php $meta = get_post_meta(get_the_ID(), 'smoke-status', true); echo $meta; ?></span>
-<span style='color: #fff;background: #77bf18;padding: 4px;font-size: 13px;'><?php
-echo get_the_term_list($post->ID, 'genre', '', ', ', '');
-?></span>
-<?php the_excerpt(); ?>
-
-
-</div>
-
-</div></li>
-<?php wp_reset_query(); ?>
-<?php endwhile;
-echo "</ul></div>";
-echo $after_widget; 
-} }
-
-
 // widget bottom ongoing anime
 add_action( 'widgets_init', 'recent_widget'); 
 function recent_widget() {
@@ -103,11 +40,12 @@ while($recent->have_posts()) : $recent->the_post(); ?>
 <?php
 $post_id = get_the_ID();
 $imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'cover-image', $post_id,'thumb'); 
-$imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
-$str = $imageurl[0];
-    echo "<img src='".$str."' title='";the_title(); echo "' alt='";the_title(); echo "'width='100%' height='auto'>"; }else { ?>
-							<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt="<?php the_title(); ?>"width='100%' height='auto' />
-				<?php } ?>
+$imageurl = wp_get_attachment_image_src($imageid,'thumb'); 
+if($imageid){
+	$str = $imageurl[0];
+	echo "<img src='".$str."' title='";the_title(); echo "' alt='";the_title(); echo "'width='100%' height='auto'>"; } else { ?>
+	<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt="<?php the_title(); ?>"width='100%' height='auto' />
+<?php } ?>
 </div>
 <div class='polarco'>
 <div class='polarjdl'><a class='kmz' rel="<?php the_id();?>" href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a></div>

@@ -252,6 +252,12 @@ function demo_load_my_posts() {
             foreach( $all_posts as $key => $post ):
                 $count=0;
                 $term = get_the_terms($post->ID, 'tipe');
+                $cekBD = get_post_meta( $post->ID, 'smoke-bd', true );
+                if($cekBD!=''){
+                    $BD = '<div class="spekBD">BD</div>';
+                } else {
+                    $BD = '';
+                }
                 foreach( $term as $terms ){
                     $count++;
                     $ters .= $terms->name.' ';
@@ -266,7 +272,7 @@ function demo_load_my_posts() {
                     $final = $special;
                     }
                 $msg .= '
-                    <li class="'.$final.'"><a class="series" data-id ="'.$ters.'" rel="'.$post->ID.'" href = "' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a><i class="fa fa-check"></i></li>
+                    <li class="'.$final.'"><a class="series" data-id ="'.$ters.'" rel="'.$post->ID.'" href = "' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a>'.$BD.'<i class="fa fa-check"></i></li>
                 ';
                 $ters='';
             endforeach;
