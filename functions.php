@@ -3,7 +3,6 @@ require_once('inc/widget.php');
 require_once('inc/custom-post.php');
 require_once('inc/custom-functions.php');
 
-
 if ( function_exists('register_sidebar') )
     register_sidebar(array(
       'name' => 'Sidebar Right',
@@ -66,7 +65,6 @@ function register_my_menus() {
 }
 
 add_filter('jpeg_quality', function($arg){return 92;});
-
 add_action( 'after_setup_theme', 'mytheme_custom_thumbnail_size' );
 function mytheme_custom_thumbnail_size(){
     add_image_size( 'thumb-small', 300, 9999, true ); // Hard crop to exact dimensions (crops sides or top and bottom)
@@ -176,100 +174,142 @@ add_filter('show_admin_bar', '__return_false');
 // Multiple Bg
 if (class_exists('MultiPostThumbnails')) {
 
-new MultiPostThumbnails(array(
+new MultiPostThumbnails(
+        array(
 'label' => 'Thumbnail Depan',
 'id' => 'cover-image',
 'post_type' => 'anime',
- ) );
+ )
+ );
+}
+if (class_exists('MultiPostThumbnails')) {
+
+new MultiPostThumbnails(
+        array(
+'label' => 'Thumbnail Cover',
+'id' => 'depan-image',
+'post_type' => 'anime',
+ )
+ );
 }
 add_action( 'wp_enqueue_scripts', 'my_custom_script_load' );
 function my_custom_script_load(){
   wp_enqueue_script( 'owl.carousel.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js', array() );
 }
-// Receive the Request post that came from AJAX
-add_action( 'wp_ajax_demo-pagination-load-posts', 'cvf_demo_pagination_load_posts' );
-// We allow non-logged in users to access our pagination
-add_action( 'wp_ajax_nopriv_demo-pagination-load-posts', 'cvf_demo_pagination_load_posts' );
-function cvf_demo_pagination_load_posts() {
-   
-    global $wpdb;
-    // Set default variables
+add_action( 'wp_ajax_demo_load_my_posts', 'demo_load_my_posts' );
+add_action( 'wp_ajax_nopriv_demo_load_my_posts', 'demo_load_my_posts' ); 
+function demo_load_my_posts() {
+        
+    global $wpdb; 
+    
     $msg = '';
-   
-    if(isset($_POST['page'])){
-        // Sanitize the received page  
-        $page = sanitize_text_field($_POST['page']);
+    
+    if( isset( $_POST['data']['page'] ) ){
+        // Always sanitize the posted fields to avoid SQL injections
+        $page = sanitize_text_field($_POST['data']['page']); // The page we are currently at
+        $name = sanitize_text_field($_POST['data']['th_name']);// The name of the column name we want to sort
         $cur_page = $page;
         $page -= 1;
-        // Set the number of results to display
-        $per_page = 12;
+        $per_page = 100; // Number of items to display per page
         $previous_btn = true;
         $next_btn = true;
         $first_btn = true;
         $last_btn = true;
         $start = $page * $per_page;
-       
-        // Set the table where we will be querying data
-        $table_name = $wpdb->prefix . "posts";
-        $table_names = $wpdb->prefix . "postmeta";
-       
-        // Query the necessary posts
-        $all_blog_posts = $wpdb->get_results($wpdb->prepare("
-            SELECT $wpdb->posts.* 
-    FROM $wpdb->posts, $wpdb->postmeta
-    WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
-    AND $wpdb->postmeta.meta_key = 'smoke-status' 
-    AND $wpdb->postmeta.meta_value = 'Currently Airing' 
-    AND $wpdb->posts.post_status = 'publish' 
-    AND $wpdb->posts.post_type = 'anime'
-    ORDER BY $wpdb->posts.post_modified DESC LIMIT %d, %d", $start, $per_page ) );
-
-        // At the same time, count the number of queried posts
+        
+        // The table we are querying from   
+        $posts = $wpdb->prefix . "posts";
+        $where_search = '';
+        
+        // Check if there is a string inputted on the search box
+        if($_POST['data']['th_name']!=='post_title'){
+            // If a string is inputted, include an additional query logic to our main query to filter the results
+            $where_search = ' AND (post_title LIKE "' . $name . '%") ';
+        } else {
+             $where_search='';
+        } 
+        
+        // Retrieve all the posts
+        $all_posts = $wpdb->get_results($wpdb->prepare("
+            SELECT * FROM $posts WHERE post_type = 'anime' AND post_status = 'publish' $where_search ORDER BY post_title ASC LIMIT %d, %d", $start, $per_page ) );
+        
         $count = $wpdb->get_var($wpdb->prepare("
-            SELECT COUNT(ID) FROM " . $table_name . " WHERE post_type = 'anime' AND post_status = 'publish'", array() ) );
-   
-        // Loop into all the posts
-        foreach($all_blog_posts as $key => $post):
-           
-            // Set the desired output into a variable
-            $msg .= include (TEMPLATEPATH . '/gridmode.php');
-           
-        endforeach;
-       
-        // Optional, wrap the output into a container
+            SELECT COUNT(ID) FROM " . $posts . " WHERE post_type = 'anime' AND post_status = 'publish' $where_search", array() ) );
+        
+        // Check if our query returns anything.
+        if( $all_posts ):
+            $msg .= '<div class="soralist"><ul>';
+            
+            
+            $tv='tv';
+            $movie='movie';
+            $ova='ova';
+            $special='special';
+            $tvova = 'tvova';
+            $tvspesial = 'tvspesial';
+            $final ='';
+            // Iterate thru each item
+            foreach( $all_posts as $key => $post ):
+                $count=0;
+                $term = get_the_terms($post->ID, 'tipe');
+                foreach( $term as $terms ){
+                    $count++;
+                    $ters .= $terms->name.' ';
+                };
+                    if(is_object_in_term( $post->ID, 'tipe', 'TV' )){
+                    $final = $tv;
+                    } else if (is_object_in_term( $post->ID, 'tipe', 'Ova' )) {
+                    $final = $ova;
+                    } else if (is_object_in_term( $post->ID, 'tipe', 'Movie' )) {
+                    $final = $movie;
+                    } else if (is_object_in_term( $post->ID, 'tipe', 'Special' )) {
+                    $final = $special;
+                    }
+                $msg .= '
+                    <li class="'.$final.'"><a class="series" data-id ="'.$ters.'" rel="'.$post->ID.'" href = "' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a><i class="fa fa-check"></i></li>
+                ';
+                $ters='';
+            endforeach;
+            
+            $msg .= '</ul></div>';
+        
+        // If the query returns nothing, we throw an error message
+        else:
+            $msg .= '<p class = "bg-danger">No posts matching your search criteria were found.</p>';
+            
+        endif;
+
         $msg = "<div class='cvf-universal-content'>" . $msg . "</div><br class = 'clear' />";
-       
-        // This is where the magic happens
+        
         $no_of_paginations = ceil($count / $per_page);
 
-        if ($cur_page >= 7) {
+        if ($cur_page >= 5) {
             $start_loop = $cur_page - 3;
             if ($no_of_paginations > $cur_page + 3)
                 $end_loop = $cur_page + 3;
-            else if ($cur_page <= $no_of_paginations && $cur_page > $no_of_paginations - 6) {
-                $start_loop = $no_of_paginations - 6;
+            else if ($cur_page <= $no_of_paginations && $cur_page > $no_of_paginations - 4) {
+                $start_loop = $no_of_paginations - 4;
                 $end_loop = $no_of_paginations;
             } else {
                 $end_loop = $no_of_paginations;
             }
         } else {
             $start_loop = 1;
-            if ($no_of_paginations > 7)
-                $end_loop = 7;
+            if ($no_of_paginations > 5)
+                $end_loop = 5;
             else
                 $end_loop = $no_of_paginations;
         }
-       
-        // Pagination Buttons logic    
+          
         $pag_container .= "
-        <div class='cvf-universal-pagination'>
+        <div class='cvf-universal-paginations'>
             <ul>";
 
-        /*if ($first_btn && $cur_page > 1) {
+        if ($first_btn && $cur_page > 1) {
             $pag_container .= "<li p='1' class='active'>First</li>";
         } else if ($first_btn) {
             $pag_container .= "<li p='1' class='inactive'>First</li>";
-        }*/
+        } 
 
         if ($previous_btn && $cur_page > 1) {
             $pre = $cur_page - 1;
@@ -277,15 +317,14 @@ function cvf_demo_pagination_load_posts() {
         } else if ($previous_btn) {
             $pag_container .= "<li class='inactive'>Previous</li>";
         }
-        /*
         for ($i = $start_loop; $i <= $end_loop; $i++) {
 
             if ($cur_page == $i)
                 $pag_container .= "<li p='$i' class = 'selected' >{$i}</li>";
             else
                 $pag_container .= "<li p='$i' class='active'>{$i}</li>";
-        }*/
-       
+        }
+        
         if ($next_btn && $cur_page < $no_of_paginations) {
             $nex = $cur_page + 1;
             $pag_container .= "<li p='$nex' class='active'>Next</li>";
@@ -293,28 +332,210 @@ function cvf_demo_pagination_load_posts() {
             $pag_container .= "<li class='inactive'>Next</li>";
         }
 
-        /*if ($last_btn && $cur_page < $no_of_paginations) {
+        if ($last_btn && $cur_page < $no_of_paginations) {
             $pag_container .= "<li p='$no_of_paginations' class='active'>Last</li>";
         } else if ($last_btn) {
             $pag_container .= "<li p='$no_of_paginations' class='inactive'>Last</li>";
-        }*/
+        }
 
         $pag_container = $pag_container . "
             </ul>
         </div>";
-       
-        // We echo the final output
-        echo        '<div class = "cvf-pagination-nav">' . $pag_container . '</div>';
-       
+        
+        echo 
+        '<div class = "cvf-pagination-content">' . $msg . '</div>' . 
+        '<div class = "cvf-pagination-nav">' . $pag_container . '</div>';
+        
     }
-    // Always exit to avoid further execution
+    
     exit();
+    
 }
-add_action( 'pre_get_posts', 'my_tax_query' );
 
-function my_tax_query($query){
+// Receive the Request post that came from AJAX
+add_action( 'wp_ajax_demo-pagination-load-posts', 'cvf_demo_pagination_load_posts' );
+// We allow non-logged in users to access our pagination
+add_action( 'wp_ajax_nopriv_demo-pagination-load-posts', 'cvf_demo_pagination_load_posts' );
+function cvf_demo_pagination_load_posts() {
+    global $wpdb;
+    // Set default variables
+    $msg = '';
+    if (isset($_POST['page']))
+	{
 
-    if ( !is_admin() && $query->is_main_query() && $query->is_tax( 'season' ) ) {
-        $query->set( 'post_type', array( 'anime' ) );
-    }
-};
+	// Sanitize the received page
+
+	$page = sanitize_text_field($_POST['page']);
+	$cur_page = $page;
+	$page-= 1;
+
+	// Set the number of results to display
+
+	$per_page = 6;
+	$previous_btn = true;
+	$next_btn = true;
+	$first_btn = true;
+	$last_btn = true;
+	$start = $page * $per_page;
+
+	// Set the table where we will be querying data
+
+	$table_name = $wpdb->prefix . "posts";
+	$table_names = $wpdb->prefix . "postmeta";
+
+	// Query the necessary posts
+
+	$all_blog_posts = $wpdb->get_results($wpdb->prepare("
+	SELECT * FROM ".$table_name."
+    WHERE post_type = 'anime' AND post_status = 'publish'
+    ORDER BY `post_date`  DESC LIMIT %d, %d", $start, $per_page));
+
+	// At the same time, count the number of queried posts
+
+	$count = $wpdb->get_var($wpdb->prepare("
+            SELECT COUNT(ID) FROM " . $table_name . " WHERE post_type = 'anime' AND post_status = 'publish'", array()));
+
+	// Loop into all the posts
+
+	foreach($all_blog_posts as $key => $post):
+
+		// Set the desired output into a variable
+
+		$msg.= include (TEMPLATEPATH . '/gridmode.php');
+
+
+	endforeach;
+
+	// Optional, wrap the output into a container
+
+	$msg = "<div class='cvf-universal-content'>" . $msg . "</div><br class = 'clear' />";
+
+	// This is where the magic happens
+
+	$no_of_paginations = ceil($count / $per_page);
+	if ($cur_page >= 5)
+		{
+		$start_loop = $cur_page - 3;
+		if ($no_of_paginations > $cur_page + 3) $end_loop = $cur_page + 3;
+		  else
+		if ($cur_page <= $no_of_paginations && $cur_page > $no_of_paginations - 4)
+			{
+			$start_loop = $no_of_paginations - 4;
+			$end_loop = $no_of_paginations;
+			}
+		  else
+			{
+			$end_loop = $no_of_paginations;
+			}
+		}
+	  else
+		{
+		$start_loop = 1;
+		if ($no_of_paginations > 5) $end_loop = 5;
+		  else $end_loop = $no_of_paginations;
+		}
+
+	// Pagination Buttons logic
+
+	$pag_container.= "
+        <div class='cvf-universal-paginations'>
+            <ul>";
+	if ($first_btn && $cur_page > 1)
+		{
+		$pag_container.= "<li p='1' class='active'>First</li>";
+		}
+	  else
+	if ($first_btn)
+		{
+		$pag_container.= "<li p='1' class='inactive'>First</li>";
+		}
+
+	if ($previous_btn && $cur_page > 1)
+		{
+		$pre = $cur_page - 1;
+		$pag_container.= "<li p='$pre' class='active'>Previous</li>";
+		}
+	  else
+	if ($previous_btn)
+		{
+		$pag_container.= "<li class='inactive'>Previous</li>";
+		}
+
+	for ($i = $start_loop; $i <= $end_loop; $i++)
+		{
+		if ($cur_page == $i) $pag_container.= "<li p='$i' class = 'selected' >{$i}</li>";
+		  else $pag_container.= "<li p='$i' class='active'>{$i}</li>";
+		}
+
+	if ($next_btn && $cur_page < $no_of_paginations)
+		{
+		$nex = $cur_page + 1;
+		$pag_container.= "<li p='$nex' class='active'>Next</li>";
+		}
+	  else
+	if ($next_btn)
+		{
+		$pag_container.= "<li class='inactive'>Next</li>";
+		}
+
+	if ($last_btn && $cur_page < $no_of_paginations)
+		{
+		$pag_container.= "<li p='$no_of_paginations' class='active'>Last</li>";
+		}
+	  else
+	if ($last_btn)
+		{
+		$pag_container.= "<li p='$no_of_paginations' class='inactive'>Last</li>";
+		}
+
+	$pag_container = $pag_container . "
+            </ul>
+        </div>";
+
+	// We echo the final output
+
+	echo '<div class = "cvf-pagination-nav">' . $pag_container . '</div>';
+	}
+
+// Always exit to avoid further execution
+
+exit();
+}
+
+function ws_register_images_field() {
+    register_rest_field( 
+        'post',
+        'images',
+        array(
+            'get_callback'    => 'ws_get_images_urls',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+}
+
+add_action( 'rest_api_init', 'ws_register_images_field' );
+
+function ws_get_images_urls( $object, $field_name, $request ) {
+    $medium = wp_get_attachment_image_src( get_post_thumbnail_id( $object->id ), 'medium' );
+    $medium_url = $medium['0'];
+
+    $large = wp_get_attachment_image_src( get_post_thumbnail_id( $object->id ), 'large' );
+    $large_url = $large['0'];
+
+    return array(
+        'medium' => $medium_url,
+        'large'  => $large_url,
+    );
+}
+// Remove WP Version From Styles	
+add_filter( 'style_loader_src', 'sdt_remove_ver_css_js', 9999 );
+// Remove WP Version From Scripts
+add_filter( 'script_loader_src', 'sdt_remove_ver_css_js', 9999 );
+
+// Function to remove version numbers
+function sdt_remove_ver_css_js( $src ) {
+	if ( strpos( $src, 'ver=' ) )
+		$src = remove_query_arg( 'ver', $src );
+	return $src;
+}

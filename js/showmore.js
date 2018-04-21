@@ -1,5 +1,5 @@
 $(function() {
-var showTotalChar = 200, showChar = "Show More (+)", hideChar = "Show Less (-)";
+var showTotalChar = 200, showChar = "Show More (-)", hideChar = "Show Less (+)";
 $('.show').each(function() {
 var content = $(this).text();
 if (content.length > showTotalChar) {
@@ -11,10 +11,9 @@ $(this).html(txt);
 });
 $(".showmoretxt").click(function() {
 if ($(this).hasClass("sample")) {
-$(this).removeClass("sample");
 $(this).text(showChar);
 } else {
-$(this).addClass("sample");
+$(this).removeClass("sample");
 $(this).text(hideChar);
 }
 $(this).parent().prev().toggle();

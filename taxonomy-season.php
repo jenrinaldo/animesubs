@@ -2,12 +2,10 @@
 
 <div class="venser">
 
-<div class="rvad"><h1><span><?php single_tag_title(); ?></span></h1></div>
+<div class="rvads"><h1><span><?php single_tag_title(); ?></span></h1></div>
 <div class="rapi">
 <div class="venz">
 <ul>
-    
-    
 <?php 
 $nama = single_term_title("", false);
 $fix = strtolower($nama);
@@ -26,13 +24,12 @@ $fix = strtolower($nama);
 // The Query
 $query = new WP_Query( $args );
         if($query->have_posts()):while($query->have_posts()):$query->the_post(); ?>
-              <?php include (TEMPLATEPATH . '/parts/archive.php'); ?>
+              <?php include (TEMPLATEPATH . '/grid.php'); ?>
    <?php
 
         endwhile;
         endif;
    ?>
-
 </ul>
 
 </div>
@@ -44,7 +41,7 @@ $query = new WP_Query( $args );
 
 </div>
 
-
+<?php get_sidebar(); ?>
 </div>
 
 <?php get_footer(); ?>

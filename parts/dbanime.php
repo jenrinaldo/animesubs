@@ -1,4 +1,5 @@
-<?php $cover = get_post_meta(get_the_ID(),'smoke-bgcover',true)?>
+<?php $cover = get_post_meta(get_the_ID(),'smoke-bgcover',true);
+ $cover = str_replace('https://animesubs.net/wp-content/uploads', 'http://cdn.animesubs.net', $cover);?>
 
 <div class="bg-big"></div>
 <style>
@@ -17,12 +18,16 @@
 
 <div class='dbori'>
 <a class="linkPrev" href="#" onclick="lightbox_open();">
-<?php if ( has_post_thumbnail() ) { ?>
-<?php the_post_thumbnail('thumb-large', array( 'title' => get_the_title() )); ?>
-<?php } else { ?>
-<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" />
-<?php } ?>
-<svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg></a>
+<svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path>
+<?php
+$imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'depan-image', $post->ID,'thumb'); 
+$imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
+$str = $imageurl[0];
+    $str = str_replace('https://animesubs.net/wp-content/uploads', 'http://cdn.animesubs.net', $str);
+    echo "<img src='".$str."' title='".$post->post_title."' alt='".$post->post_title."'width='350' height='496'>"; }else { ?>
+  				<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt=" "width='350' height='180' />
+<?php }?>
+</svg></a>
 <div class='dbtitle'>
 <h2> Information</h2>
 <div class="info-item"><span>Type </span><p><?php

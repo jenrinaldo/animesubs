@@ -7,7 +7,8 @@ jQuery("#smoke-myanimelist-api-generate").on("click", function(){
 			jQuery("#new-tag-genre").val(data["genres"]);
 			jQuery("#new-tag-season").val(data["premiered"]);
 			jQuery("#new-tag-producer").val(data["producers"]);
-			jQuery("#smoke_snopsis").val(data["synopsis"]);
+			jQuery("#new-tag-types").val(data["tipe"]);
+			jQuery("#content.wp-editor-area").val(data["synopsis"]);
 			jQuery("input[name=\"post_title\"]#title").val(data["title"]);
 			jQuery.each(data, function(key, value){
 				if(jQuery("#smoke-" + key).length > 0){

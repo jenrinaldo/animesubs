@@ -4,7 +4,7 @@
 <?php $chap = get_the_ID($post->ID, "drama", true); ?>
 <?php
 $cukchap = new WP_Query(array(
-'showposts' => '6',
+'showposts' => '10',
 'post_type' => 'anime',
 'orderby' => 'rand',
 ));
@@ -17,10 +17,12 @@ $cukchap->the_post();
 <div class='related'>
 <a href="<?php the_permalink() ?>" class="anime-rel" rel="<?php the_id();?>">
     <div class="darken"></div>
-<?php if ( has_post_thumbnail() ) { ?>
-<?php the_post_thumbnail('thumb', array( 'title' => get_the_title() )); ?>
-<?php } else { ?>
-<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" />
+<?php
+$imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'depan-image', $post->ID,'thumb'); 
+$imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
+$str = $imageurl[0];
+    echo "<img src='".$str."' title='".$post->post_title."' alt='".$post->post_title."'width='350' height='496'>"; }else { ?>
+				<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt=" "width='350' height='180' />
 <?php } ?>
 
 <div class="jds"><h2><?php the_title(); ?></h2></div>

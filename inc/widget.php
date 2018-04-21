@@ -94,54 +94,31 @@ extract($args);
 echo $before_widget;
 $name = apply_filters( 'widget_title', $instance['name'] );
 $total = empty( $instance['total'] ) ? '&nbsp;' : $instance['total'];
-if ( !empty( $name ) ) { echo "<div class='rvad'><h1><span>" . $name . "</span></h1></div>"; };
+if ( !empty( $name ) ) { echo "<h3><span>" . $name . "</span><span style='float:right;'><i class='flaticon-prize-badge-with-star-and-ribbon'></i></span></h3>"; };
 
-$recent = new WP_Query("post_type=anime&showposts=$total&order_by=title&order=ASC&meta_key=smoke-status&meta_value=Currently Airing"); while($recent->have_posts()) : $recent->the_post(); ?>
-<div class='grid-2-panel'>
-<div class='panel'>
-<?php if ( has_post_thumbnail() ) { ?>
-<?php the_post_thumbnail('thumb', array( 'title' => get_the_title() )); ?>
-<?php } else { ?>
-<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" />
-<?php } ?>
-<h2><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><?php the_title(); ?></a> </h2>
-
-
+$recent = new WP_Query("post_type=anime&showposts=$total&order_by=title&order=ASC&meta_key=smoke-status&meta_value=Currently Airing"); 
+while($recent->have_posts()) : $recent->the_post(); ?>
+<div class='polarpost'>
+<div class='polargambar'>
 <?php
-$valuez = get_the_ID($post->ID, $type, true);
-?><?php
-$listseri = new WP_Query(array(
-'showposts' => '1',
-'post_type' => $post,
-'meta_key' => 'smoker_episode',
-'meta_value' => 'true',
-'orderby' => 'date',
-'order' => 'DESC',
-'meta_key' => 'smoke_series',
-'meta_value' => $valuez
-));
-?><?php
-if ($listseri->have_posts()):
-while ($listseri->have_posts()):
-$listseri->the_post();
+$post_id = get_the_ID();
+$imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'cover-image', $post_id,'thumb'); 
+$imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
+$str = $imageurl[0];
+    echo "<img src='".$str."' title='";the_title(); echo "' alt='";the_title(); echo "'width='100%' height='auto'>"; }else { ?>
+							<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt="<?php the_title(); ?>"width='100%' height='auto' />
+				<?php } ?>
+</div>
+<div class='polarco'>
+<div class='polarjdl'><a class='kmz' rel="<?php the_id();?>" href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a></div>
+<div class='genreser'>
+ <span>
+ <?php
+echo get_the_term_list($post->ID, 'genre', '', ', ', '');
 ?>
-
-<div class="barusan"><a href="<?php
-the_permalink();
-?>"> #Eps.<?php
-$meta = get_post_meta(get_the_ID(), 'smoker_episode', true);
-echo $meta;
-?></a> <?php $counter = wpb_get_post_views(get_the_ID()); if($counter > 5){ ?> <span style="background:#f33232;color:#fff;padding:1px 5px;" class="hot">Hot</span><?php } ?></div><div class = "baru"><a href="<?php
-the_permalink();
-?>"></div><?php endwhile; ?><?php
-else:
-?><?php
-endif;
-?><?php wp_reset_postdata(); ?>
-
-
+</span>
 </div>
-</div>
+</div></div>
 
 <?php endwhile;
 echo '<div class="clear"></div>';
@@ -185,7 +162,16 @@ echo "<div class='aduh'>";
 $i = 0;$popularpost = new WP_Query( array( 'posts_per_page' => $total, 'post_type' => 'anime', 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num' ) ); while ( $popularpost->have_posts() ) : $popularpost->the_post(); ?>
 <?php $i++ ?>
 <div class='polarpost'>
-<div class='polargambar'><?php if ( has_post_thumbnail()) { the_post_thumbnail('thumb', array( 'title' => get_the_title() )); }?></div>
+<div class='polargambar'>
+<?php
+$post_id = get_the_ID();
+$imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'cover-image', $post_id,'thumb'); 
+$imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
+$str = $imageurl[0];
+    echo "<img src='".$str."' title='";the_title(); echo "' alt='";the_title(); echo "'width='100%' height='auto'>"; }else { ?>
+							<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt="<?php the_title(); ?>"width='100%' height='auto' />
+				<?php } ?>
+				</div>
 <div class='polarco'>
 <div class='polarjdl'><a class='kmz' rel="<?php the_id();?>" href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a></div>
 <div class='genreser'>
@@ -303,6 +289,56 @@ echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" t
 echo "</ul></div>";
 echo $after_widget;
 } }
+
+// widget tipe list
+add_action( 'widgets_init', 'tipe_widget'); 
+function tipe_widget() {
+register_widget( 'tipe_widget_info' );
+}
+class tipe_widget_info extends WP_Widget { 
+function tipe_widget_info () {
+                                $this->WP_Widget('tipe_widget_info', 'Tipe List (C-Studio)', $widget_ops );        } 
+public function form( $instance ) {
+if ( isset( $instance[ 'name' ]) && isset ($instance[ 'total' ]) ) {
+$name = $instance[ 'name' ];
+$total = $instance[ 'total' ];
+}
+else {
+$name = __( '', 'srs_widget_title' );
+$total = __( '', 'srs_widget_title' );
+} ?>
+<p>Title: <input class="widefat" name="<?php echo $this->get_field_name( 'name' ); ?>" type="text" value="<?php echo esc_attr( $name );?>" /></p>
+<p>Display: <input class="widefat" name="<?php echo $this->get_field_name( 'total' ); ?>" type="number" min="5" value="<?php echo esc_attr( $total ); ?>" /></p> 
+<?php
+} 
+function update($new_instance, $old_instance) { 
+$instance = $old_instance; 
+$instance['name'] = ( ! empty( $new_instance['name'] ) ) ? strip_tags( $new_instance['name'] ) : ''; 
+$instance['total'] = ( ! empty( $new_instance['total'] ) ) ? strip_tags( $new_instance['total'] ) : ''; 
+return $instance; 
+}  
+function widget($args, $instance) {
+extract($args);
+echo $before_widget;
+$name = apply_filters( 'widget_title', $instance['name'] );
+$total = empty( $instance['total'] ) ? '&nbsp;' : $instance['total'];
+if ( !empty( $name ) ) { echo "<h3><span>" . $name . "</span><span style='float:right;'><i class='flaticon-prize-badge-with-star-and-ribbon'></i></span></h3>"; };
+echo "<div class='seasonswidget'><ul>";
+$i = 0;$taxonomy = 'tipe';
+$tax_terms = get_terms($taxonomy);
+?>
+<?php $i++ ?>
+<?php
+foreach ($tax_terms as $tax_term) {
+echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" title="' . sprintf( __( "View all seri in genre %s" ), $tax_term->name ) . '" ' . '>' . $tax_term->name . '</a></li>';
+}
+?>
+<?php
+echo "</ul></div>";
+echo $after_widget;
+} }
+
+
 
 // widget genre list
 add_action( 'widgets_init', 'genre_widget'); 
