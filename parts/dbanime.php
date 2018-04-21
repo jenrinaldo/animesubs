@@ -150,19 +150,6 @@ echo get_the_term_list($post->ID, 'genre', '', ' ', '');
 </div>
 </div>
 <?php setup_postdata(get_the_ID());?>
-<div class='dbeps'>
- <h2>List Eps. <?php the_title(); ?> </h2> 
 
-
-<? $i = 0;
-$metas = get_post_meta( get_the_ID(), 'smoke_embed', true );
-foreach ( $metas as $drops )
-{ $i++; ?>
-<?php $ass = explode(" ",$drops);$ass = str_replace("[","",$ass[0]);
-      $nomor = explode(" ",$drops);$nomor = str_replace("[","",$nomor[1]);
-?>
-<li><span><a href="<?php the_permalink(); ?>watch/?<?php echo $ass."-".$nomor; ?>"><?php echo $ass." ".$nomor;  ?></a></span></li>
-<?php }?>
-</div>
 
 </div>
