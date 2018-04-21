@@ -208,7 +208,6 @@ function your_prefix_get_meta_box( $meta_boxes ) {
 				'rows' => 4,
 				'options' => array(
 					'Episode' => 'Episode = Eps berapa, Batch = Batch, Movie = Movie',
-					'Nama' => 'Nama',
 					'720p' => '720p',
 					'480p' => '480p',
 					'360p' => '360p',

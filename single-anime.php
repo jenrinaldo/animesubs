@@ -125,7 +125,6 @@ echo get_the_term_list($post->ID, 'tipe', '', ', ', '');
 <?php $link = get_post_meta(get_the_ID(),'prefix-link',true);
 $cekMovie = get_post_meta(get_the_ID(),'prefix-movie',true);
 foreach($link as $links){
-  $nama = explode(" ",$links['Nama']);
   $namaFinal = '';
   $namaBatch = '';
   if($links['Episode']=='Batch'){
@@ -139,8 +138,30 @@ foreach($link as $links){
     $i=0;
     echo '<li><strong>720p</strong>';
     $pecah = explode(" ",$links['720p']);
+    $var1 = '//';
+    $var2 = '.';
+    $var3 = 'www.';
     foreach($pecah as $petjah){
-      echo '<a href='.$petjah.'data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
+      $temp = strpos($petjah, $var3) + strlen($var3);
+      if ($temp != ''){
+        $temp = strpos($petjah, $var3) + strlen($var3);
+      } else {
+        $temp = strpos($petjah, $var1) + strlen($var1);
+      }
+      $result = substr($petjah, $temp, strlen($petjah));
+      $dd = strpos($result, $var2);
+      if ($dd == 0) {
+        $dd = strlen($result);
+      }
+      $name = substr($result, 0, $dd);
+      $name = str_replace('s://', '', $name);
+      $name = ucfirst($name);
+      $nama[$i] = $name;
+      $i++;
+    };
+    $i=0;
+    foreach($pecah as $petjah){
+      echo '<a href='.$petjah.' data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
       $i++;
     }
     echo '</li>';
