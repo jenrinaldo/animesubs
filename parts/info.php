@@ -6,10 +6,10 @@
 <img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" />
 <?php } ?>
 
-<h2><?php the_title(); ?> <span style='color:#c74242;float:right;'>#<?php $meta = get_post_meta( get_the_ID(), 'smoke-score', true ); echo $meta; ?></span> </h2>
+<h2><?php the_title(); ?> <span style='color:#c74242;float:right;'>#<?php $meta = get_post_meta( get_the_ID(), 'jensan-score', true ); echo $meta; ?></span> </h2>
 <div class='is'>
-<span style='color: #fff;background: #ff5d5d;padding: 4px;font-size: 13px;'><?php $meta = get_post_meta(get_the_ID(), 'smoke-episodes', true); echo $meta; ?></span>
-<span style='color: #fff;background: #ff6f2b;padding: 4px;font-size: 13px;'><?php $meta = get_post_meta(get_the_ID(), 'smoke-status', true); echo $meta; ?></span>
+<span style='color: #fff;background: #ff5d5d;padding: 4px;font-size: 13px;'><?php $meta = get_post_meta(get_the_ID(), 'jensan-episodes', true); echo $meta; ?></span>
+<span style='color: #fff;background: #ff6f2b;padding: 4px;font-size: 13px;'><?php $meta = get_post_meta(get_the_ID(), 'jensan-status', true); echo $meta; ?></span>
 <span style='color: #fff;background: #77bf18;padding: 4px;font-size: 13px;'><?php
 echo get_the_term_list($post->ID, 'genre', '', ', ', '');
 ?></span>

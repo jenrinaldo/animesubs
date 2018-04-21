@@ -33,7 +33,7 @@ $name = apply_filters( 'widget_title', $instance['name'] );
 $total = empty( $instance['total'] ) ? '&nbsp;' : $instance['total'];
 if ( !empty( $name ) ) { echo "<h3><span>" . $name . "</span><span style='float:right;'><i class='flaticon-prize-badge-with-star-and-ribbon'></i></span></h3>"; };
 
-$recent = new WP_Query("post_type=anime&showposts=$total&order_by=title&order=ASC&meta_key=smoke-status&meta_value=Currently Airing"); 
+$recent = new WP_Query("post_type=anime&showposts=$total&order_by=title&order=ASC&meta_key=jensan-status&meta_value=Currently Airing"); 
 while($recent->have_posts()) : $recent->the_post(); ?>
 <div class='polarpost'>
 <div class='polargambar'>

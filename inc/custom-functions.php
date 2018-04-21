@@ -3,9 +3,6 @@ function CukStudio_MyAnimeList_API(){
 	wp_enqueue_script("myanimelist", get_template_directory_uri(). "/js/myanimelist.js", null, null, true);
 }
 
-function CukStudio_Gogoanime_API(){
-	wp_enqueue_script("gogoanime", get_template_directory_uri(). "/js/gogoanime.js", null, null, true);
-}
 function MyAnimeList_API_Add_Meta_Box(){
 	add_meta_box(
 		"MyAnimeList-API",
@@ -16,67 +13,53 @@ function MyAnimeList_API_Add_Meta_Box(){
 		"default"
 	);
 }
-function Gogoanime_API_Add_Meta_Box(){
-	add_meta_box(
-		"Gogoanime-API",
-		__("Gogoanime API", "cstudio"),
-		"Gogoanime_API_Meta_Box",
-		"anime",
-		"normal",
-		"default"
-	);
-}
 
-function CukStudio_Meta_Box( $meta_boxes ) {
-	$prefix = "smoke-";
+function jensan_meta_box( $meta_boxes ) {
+	$prefix = 'jensan-';
+
 	$meta_boxes[] = array(
-		"id" => "cstudio_meta_box",
-		"title" => esc_html__( "Information Anime", "cstudio" ),
-		"post_types" => array( "anime" ),
-		"context" => "advanced",
-		"priority" => "high",
-		"autosave" => true,
-		"fields" => array(
+		'id' => 'jensan-metabox',
+		'title' => esc_html__( 'Anime Info', 'jensan' ),
+		'post_types' => array( 'anime' ),
+		'context' => 'advanced',
+		'priority' => 'high',
+		'autosave' => true,
+		'fields' => array(
+			array(
+				'id' => 'jensan-meta-box',
+				'type' => 'heading',
+				'name' => esc_html__( 'BD Status', 'jensan' ),
+			),
 			array(
 				'id' => $prefix . 'bd',
-				'name' => esc_html__( 'BD', 'metabox-online-generator' ),
+				'name' => esc_html__( 'BD ?', 'jensan' ),
 				'type' => 'checkbox',
-				'desc' => esc_html__( 'BD', 'metabox-online-generator' ),
+				'desc' => esc_html__( 'Checkbox for BD Status', 'jensan' ),
 			),
 			array(
-				"id" => "Background-Cover",
-				"type" => "heading",
-				"name" => esc_html("Background Cover","cstudio"),
+				'id' => 'background_link',
+				'type' => 'heading',
+				'name' => esc_html__( 'Background Link', 'jensan' ),
 			),
 			array(
-				"id" => $prefix. "bgcover",
-				"type" => "text",
-				"name" => esc_html__( "Background Cover", "cstudio" ),
+				'id' => $prefix . 'bgcover',
+				'type' => 'url',
+				'name' => esc_html__( 'Background Cover', 'jensan' ),
 			),
 			array(
-				"id" => "current-episode",
-				"type" => "text",
-				"name" => esc_html__( "Episode Sekarang", "cstudio" ),
-			),
-			array(
-				"id" => "alternative-titles",
-				"type" => "heading",
-				"name" => esc_html__( "Alternative Titles", "cstudio" ),
+				'id' => 'altjudul',
+				'type' => 'heading',
+				'name' => esc_html__( 'Alternative Titlte', 'jensan' ),
 			),
 			array(
 				"id" => $prefix . "english",
 				"type" => "text",
-				"name" => esc_html__( "English", "cstudio" ),
+				"name" => esc_html__( "English", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "japanese",
 				"type" => "text",
-				"name" => esc_html__( "Japanese", "cstudio" ),
-			),
-			array(
-				"id" => $prefix . "pv",
-				"type" => "text",
-				"name" => esc_html__( "Video Promosi", "cstudio" ),
+				"name" => esc_html__( "Japanese", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "synonyms",
@@ -86,126 +69,89 @@ function CukStudio_Meta_Box( $meta_boxes ) {
 			array(
 				"id" => "information",
 				"type" => "heading",
-				"name" => esc_html__( "Information", "cstudio" ),
+				"name" => esc_html__( "Information", "jensan" ),
+			),
+			array(
+				"id" => $prefix . "pv",
+				"type" => "text",
+				"name" => esc_html__( "Video PV", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "episodes",
 				"type" => "text",
-				"name" => esc_html__( "Episodes", "cstudio" ),
+				"name" => esc_html__( "Episodes", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "status",
 				"type" => "text",
-				"name" => esc_html__( "Status", "cstudio" ),
+				"name" => esc_html__( "Status", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "aired",
 				"type" => "text",
-				"name" => esc_html__( "Aired", "cstudio" ),
+				"name" => esc_html__( "Aired", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "broadcast",
 				"type" => "text",
-				"name" => esc_html__( "Broadcast", "cstudio" ),
+				"name" => esc_html__( "Broadcast", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "licensors",
 				"type" => "text",
-				"name" => esc_html__( "Licensors", "cstudio" ),
+				"name" => esc_html__( "Licensors", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "studios",
 				"type" => "text",
-				"name" => esc_html__( "Studios", "cstudio" ),
+				"name" => esc_html__( "Studios", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "source",
 				"type" => "text",
-				"name" => esc_html__( "Source", "cstudio" ),
+				"name" => esc_html__( "Source", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "duration",
 				"type" => "text",
-				"name" => esc_html__( "Duration", "cstudio" ),
+				"name" => esc_html__( "Duration", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "rating",
 				"type" => "text",
-				"name" => esc_html__( "Rating", "cstudio" ),
+				"name" => esc_html__( "Rating", "jensan" ),
 			),
 			array(
 				"id" => "statistics",
 				"type" => "heading",
-				"name" => esc_html__( "Statistics", "cstudio" ),
+				"name" => esc_html__( "Statistics", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "score",
 				"type" => "text",
-				"name" => esc_html__( "Score", "cstudio" ),
+				"name" => esc_html__( "Score", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "ranked",
 				"type" => "text",
-				"name" => esc_html__( "Ranked", "cstudio" ),
+				"name" => esc_html__( "Ranked", "jensan" ),
 			),
 			array(
 				"id" => $prefix . "popularity",
 				"type" => "text",
-				"name" => esc_html__( "Popularity", "cstudio" ),
+				"name" => esc_html__( "Popularity", "jensan" ),
 			),
-		),
-	);
-	return $meta_boxes;
-}
-
-function your_prefix_register_meta_boxes( $meta_boxes ){
-$prefix = 'smoke_';
-$prefixx = 'smoker_';
-
-$meta_boxes[] = array(
-		'id' => 'stream',
-		'title' => __( 'Info Video', 'meta-box' ),
-		'pages' => array( 'anime'),
-		'context' => 'normal',
-		'priority' => 'high',
-		'autosave' => true,
-		'fields' => array(
-		array(
-				'name'  => __( 'Embed Video', 'meta-box' ),
-				'id'    => "{$prefix}embed",
-				'desc'  => __( 'Episode Estream Mp4Upload Streamango Streamcherry Oload Vidstreaming Vidcdn', 'meta-box' ),
-				'type' => 'textarea',
-				'clone' => 'true',
+			array(
+				"id" => "linkdl",
+				"type" => "heading",
+				"name" => esc_html__( "Link Download", "jensan" ),
 			),
-				array(
-				'name'  => __( 'API Video Data', 'meta-box' ),
-				'id'    => "{$prefix}data",
-				'desc'  => __( 'Data Link From API'),
-				'type'  => 'textarea'
-			),
-         )
-			
-);
-	return $meta_boxes;
-}
-
-function your_prefix_get_meta_box( $meta_boxes ) {
-	$prefix = 'prefix-';
-
-	$meta_boxes[] = array(
-		'id' => 'dlmetabox',
-		'title' => esc_html__( 'Metabox Download', 'metabox-online-generator' ),
-		'post_types' => 'anime',
-		'context' => 'advanced',
-		'priority' => 'default',
-		'autosave' => false,
-		'fields' => array(
 			array(
 				'id' => $prefix . 'link',
 				'type' => 'fieldset_text',
-				'name' => esc_html__( 'Link Download', 'metabox-online-generator' ),
-				'desc' => esc_html__( 'Link Download', 'metabox-online-generator' ),
-				'rows' => 4,
+				'name' => esc_html__( 'Link Download', 'jensan' ),
+				'desc' => esc_html__( 'Link Download', 'jensan' ),
+				'rows' => 2,
 				'options' => array(
 					'Episode' => 'Episode = Eps berapa, Batch = Batch, Movie = Movie',
 					'720p' => '720p',
@@ -214,7 +160,7 @@ function your_prefix_get_meta_box( $meta_boxes ) {
 					'240p' => '240p',
 				),
 				'clone' => true,
-				'add_button' => esc_html__( 'Download', 'metabox-online-generator' ),
+				'add_button' => esc_html__( 'Next Eps', 'jensan' ),
 				'attributes' => array(
 					'Movie' => 'Movie',
 				),
@@ -224,52 +170,29 @@ function your_prefix_get_meta_box( $meta_boxes ) {
 
 	return $meta_boxes;
 }
-add_filter( 'rwmb_meta_boxes', 'your_prefix_get_meta_box' );
 
 function MyAnimeList_API_Meta_Box($post){
 ?>
 <div class="rwmb-meta-box">
 	<div class="rwmb-field rwmb-text-wrapper">
 		<div class="rwmb-label">
-			<label for="smoke-myanimelist-api">MyAnimeList API</label>		
+			<label for="jensan-myanimelist-api">MyAnimeList API</label>		
 		</div>
 		<div class="rwmb-input ui-shortable">
 			<div class="rwmb-clone rwmb-text-clone">
-				<input size="30" type="text" id="smoke-myanimelist-api" class="rwmb-text " name="smoke-myanimelist-api"/>
+				<input size="30" type="text" id="jensan-myanimelist-api" class="rwmb-text " name="jensan-myanimelist-api"/>
 			</div>
-			<a class="button-primary" id="smoke-myanimelist-api-generate">Generate</a>
+			<a class="button-primary" id="jensan-myanimelist-api-generate">Generate</a>
 		</div>
 	</div>
 </div>
 <?php
 }
 
-function Gogoanime_API_Meta_Box($post){
-    ?>
-    <div class="rwmb-meta-box">
-        <div class="rwmb-field rwmb-text-wrapper">
-            <div class="rwmb-label">
-                <label for="smoke-gogoanime-api">Gogoanime API</label>		
-            </div>
-            <div class="rwmb-input ui-shortable">
-                <div class="rwmb-clone rwmb-text-clone">
-                    <input size="30" type="text" id="smoke-gogoanime-api" class="rwmb-text " name="smoke-gogoanime-api"/>
-                </div>
-                <a class="button-primary" id="smoke-gogoanime-api-generate">Generate</a>
-            </div>
-        </div>
-    </div>
-    <?php
-    }
-
 function CukStudio_Setup(){
     add_action("add_meta_boxes", "MyAnimeList_API_Add_Meta_Box");
-    add_action("add_meta_boxes", "Gogoanime_API_Add_Meta_Box");
-    add_filter("rwmb_meta_boxes", "CukStudio_Meta_Box");
-    add_filter( 'rwmb_meta_boxes', 'your_prefix_register_meta_boxes' );
+    add_filter('rwmb_meta_boxes', 'jensan_meta_box' );
     add_action("admin_enqueue_scripts", "CukStudio_MyAnimeList_API");
-    add_action("admin_enqueue_scripts", "CukStudio_Gogoanime_API");
-    add_action("admin_enqueue_scripts", "slider");
 	add_theme_support("post-thumbnails");
 	add_theme_support("title-tag");
 }

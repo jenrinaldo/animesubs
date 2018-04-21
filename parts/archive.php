@@ -1,4 +1,4 @@
-<?php $aired = get_post_meta( $post->ID, 'smoke-aired', true );
+<?php $aired = get_post_meta( $post->ID, 'jensan-aired', true );
  $years = explode(" ",$aired);
  $years_final = $years[2];
  setup_postdata($post->ID);
@@ -14,7 +14,7 @@ $imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
 
 <?php } ?>
         </a>
-        <span class="score"><?php $meta = get_post_meta( $post->ID, 'smoke-score', true ); echo $meta; ?>
+        <span class="score"><?php $meta = get_post_meta( $post->ID, 'jensan-score', true ); echo $meta; ?>
             <svg viewBox="0 0 24 24">
                 <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
             </svg>

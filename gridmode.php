@@ -1,7 +1,7 @@
 <?php wp_reset_postdata();?>
 <?php 
 $EpsNum = get_post_meta( $post->ID, 'current-episode', true );
-$cekBD = get_post_meta( $post->ID, 'smoke-bd', true );
+$cekBD = get_post_meta( $post->ID, 'jensan-bd', true );
 $nama = wp_get_object_terms( $post->ID, 'tipe', array( 'fields' => 'names' ) );
 $nama = array_pop($nama);
 ?>
@@ -37,7 +37,7 @@ Ep. <?php echo $EpsNum ?>
 <li><b><span class="fa fa-clock-o"></span> Date : </b> <?php echo get_the_time('d F Y', $post->ID); ?></li>
 <li><b><span class="fa fa-comments-o"></span> Comment  : </b> <?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></li>
 <li class="category"><b><span class="fa fa-tags"></span> Category : </b> <?php echo get_the_term_list($post->ID, 'genre', '', ', ', ''); ?></li>
-<li class="status"><b><span class="fa fa-info-circle"></span> Status : </b><?php echo get_post_meta( $post->ID, 'smoke-status', true );?></li>
+<li class="status"><b><span class="fa fa-info-circle"></span> Status : </b><?php echo get_post_meta( $post->ID, 'jensan-status', true );?></li>
 <li class="series"><b><span class="fa fa-th-list"></span> Series : </b> <?php echo get_the_term_list($post->ID,'series','','<span class="batasanseries">|</span>',''); ?></li>
 <?php if($cekBD!=''){
   echo  '<li class="statusBD"><span>BD</span></li>';

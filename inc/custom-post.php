@@ -3,24 +3,23 @@ add_action( 'init', 'anime' );
   function anime() {
   	$labels = array(
   		'name'               => _x( 'Anime', 'post type general name', 'text_domain' ),
-  		'singular_name'      => _x( 'Anime', 'post type singular name', 'your-plugin-textdomain' ),
-  		'menu_name'          => _x( 'Anime', 'admin menu', 'your-plugin-textdomain' ),
-  		'name_admin_bar'     => _x( 'Anime', 'add new on admin bar', 'your-plugin-textdomain' ),
-  		'add_new'            => _x( 'Add New', 'anime', 'your-plugin-textdomain' ),
-  		'add_new_item'       => __( 'Add New Anime', 'your-plugin-textdomain' ),
-  		'new_item'           => __( 'New Anime', 'your-plugin-textdomain' ),
-  		'edit_item'          => __( 'Edit Anime', 'your-plugin-textdomain' ),
-  		'view_item'          => __( 'View Anime', 'your-plugin-textdomain' ),
-  		'all_items'          => __( 'All Anime', 'your-plugin-textdomain' ),
-  		'search_items'       => __( 'Search Anime', 'your-plugin-textdomain' ),
-  		'parent_item_colon'  => __( 'Parent Anime:', 'your-plugin-textdomain' ),
-  		'not_found'          => __( 'No anime found.', 'your-plugin-textdomain' ),
-  		'not_found_in_trash' => __( 'No anime found in Trash.', 'your-plugin-textdomain' )
+  		'singular_name'      => _x( 'Anime', 'post type singular name', 'jensan' ),
+  		'menu_name'          => _x( 'Anime', 'admin menu', 'jensan' ),
+  		'name_admin_bar'     => _x( 'Anime', 'add new on admin bar', 'jensan' ),
+  		'add_new'            => _x( 'Add New', 'anime', 'jensan' ),
+  		'add_new_item'       => __( 'Add New Anime', 'jensan' ),
+  		'new_item'           => __( 'New Anime', 'jensan' ),
+  		'edit_item'          => __( 'Edit Anime', 'jensan' ),
+  		'view_item'          => __( 'View Anime', 'jensan' ),
+  		'all_items'          => __( 'All Anime', 'jensan' ),
+  		'search_items'       => __( 'Search Anime', 'jensan' ),
+  		'parent_item_colon'  => __( 'Parent Anime:', 'jensan' ),
+  		'not_found'          => __( 'No anime found.', 'jensan' ),
+  		'not_found_in_trash' => __( 'No anime found in Trash.', 'jensan' )
   	);
-  
   	$args = array(
   		'labels'             => $labels,
-  		'description'        => __( 'Description.', 'your-plugin-textdomain' ),
+  		'description'        => __( 'Description.', 'jensan' ),
   		'public'             => true,
   		'publicly_queryable' => true,
   		'show_ui'            => true,
@@ -34,13 +33,13 @@ add_action( 'init', 'anime' );
   		'show_in_rest'       => true,
   		'rest_base'          => 'anime-api',
   		'rest_controller_class' => 'WP_REST_Posts_Controller',
-  		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+  		'supports'           => array( 'title', 'editor')
   	);
   
   	register_post_type( 'anime', $args );
 }
-add_action( 'init', 'my_book_taxonomy', 30 );
-function my_book_taxonomy() {
+add_action( 'init', 'anime_taxonomy', 30 );
+function anime_taxonomy() {
  
   	register_taxonomy("genre", "anime", array(
 		"labels"             => array(
@@ -222,7 +221,6 @@ function my_book_taxonomy() {
         'rest_controller_class' => 'WP_REST_Terms_Controller',
         'rewrite' => array( 'slug' => 'producer', 'with_front' => false )
 	));
- 
 }
 
 ?>

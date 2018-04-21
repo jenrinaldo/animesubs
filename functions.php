@@ -252,7 +252,7 @@ function demo_load_my_posts() {
             foreach( $all_posts as $key => $post ):
                 $count=0;
                 $term = get_the_terms($post->ID, 'tipe');
-                $cekBD = get_post_meta( $post->ID, 'smoke-bd', true );
+                $cekBD = get_post_meta( $post->ID, 'jensan-bd', true );
                 if($cekBD!=''){
                     $BD = '<div class="spekBD">BD</div>';
                 } else {

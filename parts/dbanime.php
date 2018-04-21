@@ -1,4 +1,4 @@
-<?php $cover = get_post_meta(get_the_ID(),'smoke-bgcover',true);
+<?php $cover = get_post_meta(get_the_ID(),'jensan-bgcover',true);
  $cover = str_replace('https://animesubs.net/wp-content/uploads', 'http://cdn.animesubs.net', $cover);?>
 
 <div class="bg-big"></div>
@@ -8,7 +8,7 @@
 <div class="overlay"></div>
     <div id="lights">
   <a class="boxcloses" id="boxcloses" onclick="lightbox_close();"></a>
- <iframe class="pv" src="<?php echo get_post_meta(get_the_ID(),'smoke-pv',true)?>" frameborder="0"></iframe>
+ <iframe class="pv" src="<?php echo get_post_meta(get_the_ID(),'jensan-pv',true)?>" frameborder="0"></iframe>
 </div>
 
 <div id="fade" onClick="lightbox_close();"></div>
@@ -35,14 +35,14 @@ echo get_the_term_list($post->ID, 'type', '', ', ', '');
 ?></p>
 </div>
 <?php $season = get_the_term_list($post->ID, 'season', '', ', ', '');?>
-<?php $episodes = get_post_meta( get_the_ID(), 'smoke-episodes', true );?>
-<?php $status = get_post_meta( get_the_ID(), 'smoke-status', true );?>
-<?php $duration = get_post_meta( get_the_ID(), 'smoke-duration', true );?>
-<?php $score = get_post_meta( get_the_ID(), 'smoke-score', true );?>
-<?php $aired = get_post_meta( get_the_ID(), 'smoke-aired', true );?>
-<?php $studios = get_post_meta( get_the_ID(), 'smoke-studios', true );?>
-<?php $producers = get_post_meta( get_the_ID(), 'smoke-producers', true );?>
-<?php $licensors = get_post_meta( get_the_ID(), 'smoke-licensors', true );?>
+<?php $episodes = get_post_meta( get_the_ID(), 'jensan-episodes', true );?>
+<?php $status = get_post_meta( get_the_ID(), 'jensan-status', true );?>
+<?php $duration = get_post_meta( get_the_ID(), 'jensan-duration', true );?>
+<?php $score = get_post_meta( get_the_ID(), 'jensan-score', true );?>
+<?php $aired = get_post_meta( get_the_ID(), 'jensan-aired', true );?>
+<?php $studios = get_post_meta( get_the_ID(), 'jensan-studios', true );?>
+<?php $producers = get_post_meta( get_the_ID(), 'jensan-producers', true );?>
+<?php $licensors = get_post_meta( get_the_ID(), 'jensan-licensors', true );?>
 <?php if($season!==""){?>
 <div class="info-item"><span>Season</span><p>
     <?php echo $season;?>
@@ -102,9 +102,9 @@ echo get_the_term_list($post->ID, 'type', '', ', ', '');
 <h1><?php the_title(); ?><a class="minjs" href="#" onclick="toggle_visibility('alt-title');"><i class="fa fa-caret-left" aria-hidden="true"></i></a></h1>
 
 <div id="alt-title">
-			    <?php $english = get_post_meta( get_the_ID(), 'smoke-english', true ); if($english!==""){ echo $english." , ";}; ?>
-			    <?php $synonim = get_post_meta( get_the_ID(), 'smoke-synonyms', true ); if($synonim!==""){ echo $synonim." , ";}; ?>
-			    <?php $japan = get_post_meta( get_the_ID(), 'smoke-japanese', true ); if($japan!==""){ echo $japan;}; ?>
+			    <?php $english = get_post_meta( get_the_ID(), 'jensan-english', true ); if($english!==""){ echo $english." , ";}; ?>
+			    <?php $synonim = get_post_meta( get_the_ID(), 'jensan-synonyms', true ); if($synonim!==""){ echo $synonim." , ";}; ?>
+			    <?php $japan = get_post_meta( get_the_ID(), 'jensan-japanese', true ); if($japan!==""){ echo $japan;}; ?>
 </div>
 <script type="text/javascript">
     $('.minjs').click(function(){

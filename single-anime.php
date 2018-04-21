@@ -1,16 +1,19 @@
 <?php get_header(); ?>
 <div class="bgg">
 <?php 
-$cover = get_post_meta(get_the_ID(),'smoke-bgcover',true); 
+$cover = get_post_meta(get_the_ID(),'jensan-bgcover',true); 
 $season = get_the_term_list($post->ID, 'season', '', ', ', '');
-$episodes = get_post_meta( get_the_ID(), 'smoke-episodes', true );
-$status = get_post_meta( get_the_ID(), 'smoke-status', true );
-$duration = get_post_meta( get_the_ID(), 'smoke-duration', true );
-$score = get_post_meta( get_the_ID(), 'smoke-score', true );
-$aired = get_post_meta( get_the_ID(), 'smoke-aired', true );
-$studios = get_post_meta( get_the_ID(), 'smoke-studios', true );
-$producers = get_post_meta( get_the_ID(), 'smoke-producers', true );
-$licensors = get_post_meta( get_the_ID(), 'smoke-licensors', true );
+$episodes = get_post_meta( get_the_ID(), 'jensan-episodes', true );
+$status = get_post_meta( get_the_ID(), 'jensan-status', true );
+$duration = get_post_meta( get_the_ID(), 'jensan-duration', true );
+$score = get_post_meta( get_the_ID(), 'jensan-score', true );
+$aired = get_post_meta( get_the_ID(), 'jensan-aired', true );
+$studios = get_post_meta( get_the_ID(), 'jensan-studios', true );
+$producers = get_post_meta( get_the_ID(), 'jensan-producers', true );
+$licensors = get_post_meta( get_the_ID(), 'jensan-licensors', true );
+$broadcast = get_post_meta( get_the_ID(), 'jensan-broadcast', true );
+$source = get_post_meta( get_the_ID(), 'jensan-soruce', true );
+$rating = get_post_meta( get_the_ID(), 'jensan-rating', true );
 ?>
 
 <div class="bg-big">
@@ -30,9 +33,9 @@ $licensors = get_post_meta( get_the_ID(), 'smoke-licensors', true );
 <h1><?php the_title(); ?><a class="minjs" href="#" onclick="toggle_visibility('alt-title');"><i class="fa fa-caret-left" aria-hidden="true"></i></a></h1>
 
 <div id="alt-title">
-			    <?php $english = get_post_meta( get_the_ID(), 'smoke-english', true ); if($english!==""){ echo $english." , ";}; ?>
-			    <?php $synonim = get_post_meta( get_the_ID(), 'smoke-synonyms', true ); if($synonim!==""){ echo $synonim." , ";}; ?>
-			    <?php $japan = get_post_meta( get_the_ID(), 'smoke-japanese', true ); if($japan!==""){ echo $japan;}; ?>
+			    <?php $english = get_post_meta( get_the_ID(), 'jensan-english', true ); if($english!==""){ echo $english." , ";}; ?>
+			    <?php $synonim = get_post_meta( get_the_ID(), 'jensan-synonyms', true ); if($synonim!==""){ echo $synonim." , ";}; ?>
+			    <?php $japan = get_post_meta( get_the_ID(), 'jensan-japanese', true ); if($japan!==""){ echo $japan;}; ?>
 </div>
 <script type="text/javascript">
     $('.minjs').click(function(){
@@ -82,7 +85,7 @@ echo get_the_term_list($post->ID, 'tipe', '', ', ', '');
 <div class="venser">
     <div id="lights">
   <a class="boxcloses" id="boxcloses" onclick="lightbox_close();"></a>
- <iframe class="pv" src="<?php echo get_post_meta(get_the_ID(),'smoke-pv',true)?>" frameborder="0"></iframe>
+ <iframe class="pv" src="<?php echo get_post_meta(get_the_ID(),'jensan-pv',true)?>" frameborder="0"></iframe>
 </div>
 
 <div id="fade" onClick="lightbox_close();"></div>
@@ -94,32 +97,20 @@ echo get_the_term_list($post->ID, 'tipe', '', ', ', '');
 <?php the_content(); ?>
 </div>
 <div class="info2" id="Info">
-   <h5><span class="fa fa-info"></span> Info</h5>
-   <table>
-      <tbody>
-      <tr>
-            <td class="tablex">Status <span>:</span></td>
-            <td>Currently Airing</td>
-         </tr>
-         <tr>
-         <tr>
-            <td class="tablex">Durasi Per Episode <span>:</span></td>
-            <td>24 Menit</td>
-         </tr>
-         <tr>
-            <td class="tablex">Rating <span>:</span></td>
-            <td class="ratingx">7.88 </td>
-         </tr>
-         <tr>
-            <td class="tablex">Studio <span>:</span></td>
-            <td>A-1 Pictures</td>
-         </tr>
-         <tr>
-            <td class="tablex">Series <span>:</span></td>
-            <td class="seriesx"><a href="http://nimegami.com/anime/wotaku-ni-koi-wa-muzukashii/" rel="tag" data-wpel-link="internal">Wotaku ni Koi wa Muzukashii</a></td>
-         </tr>
-      </tbody>
-   </table>
+<?php 
+echo '<h5><span class="fa fa-info"></span> Info</h5><table><tbody>';
+if(!empty($episodes)) echo  '<tr><td class="tablex">Episode <span>:</span></td><td>'.$episodes.'</td></tr>';
+if(!empty($status)) echo  '<tr><td class="tablex">Status <span>:</span></td><td>'.$status.'</td></tr>';
+if(!empty($aired)) echo  '<tr><td class="tablex">Aired / Tayang <span>:</span></td><td>'.$aired.'</td></tr>';
+if(!empty($broadcast)) echo  '<tr><td class="tablex">Broadcast <span>:</span></td><td>'.$broadcast.'</td></tr>';
+if(!empty($licensors)) echo  '<tr><td class="tablex">Licensors <span>:</span></td><td>'.$licensors.'</td></tr>';
+if(!empty($studios)) echo  '<tr><td class="tablex">Studios <span>:</span></td><td>'.$studios.'</td></tr>';
+if(!empty($source)) echo  '<tr><td class="tablex">Source <span>:</span></td><td>'.$source.'</td></tr>';
+if(!empty($duration)) echo  '<tr><td class="tablex">Duration <span>:</span></td><td>'.$duration.'</td></tr>';
+if(!empty($rating)) echo  '<tr><td class="tablex">Rating <span>:</span></td><td>'.$rating.'</td></tr>';
+if(!empty($score)) echo  '<tr><td class="tablex">Score <span>:</span></td><td>'.$score.'</td></tr>';
+echo  '</tbody></table>';
+?>
 </div>
 <div class="download" id="LinkDownload"><h5><span class="fa fa-cloud-download"></span> Download Links</h5>
 <?php $link = get_post_meta(get_the_ID(),'prefix-link',true);

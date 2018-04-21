@@ -107,7 +107,7 @@
                     'post_type' => 'anime',          // name of post type.
                     'meta_query' => array(
                         array(
-                            'key' => 'smoke-status',
+                            'key' => 'jensan-status',
                             'value' => 'Currently Airing',                 // term id, term slug or term name
                             )
                             )
