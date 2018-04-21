@@ -189,7 +189,43 @@ $meta_boxes[] = array(
 	return $meta_boxes;
 }
 
+function your_prefix_get_meta_box( $meta_boxes ) {
+	$prefix = 'prefix-';
 
+	$meta_boxes[] = array(
+		'id' => 'dlmetabox',
+		'title' => esc_html__( 'Metabox Download', 'metabox-online-generator' ),
+		'post_types' => 'anime',
+		'context' => 'advanced',
+		'priority' => 'default',
+		'autosave' => false,
+		'fields' => array(
+			array(
+				'id' => $prefix . 'link',
+				'type' => 'fieldset_text',
+				'name' => esc_html__( 'Link Download', 'metabox-online-generator' ),
+				'desc' => esc_html__( 'Link Download', 'metabox-online-generator' ),
+				'rows' => 4,
+				'options' => array(
+					'Episode' => 'Episode = Eps berapa, Batch = Batch, Movie = Movie',
+					'Nama' => 'Nama',
+					'720p' => '720p',
+					'480p' => '480p',
+					'360p' => '360p',
+					'240p' => '240p',
+				),
+				'clone' => true,
+				'add_button' => esc_html__( 'Download', 'metabox-online-generator' ),
+				'attributes' => array(
+					'Movie' => 'Movie',
+				),
+			),
+		),
+	);
+
+	return $meta_boxes;
+}
+add_filter( 'rwmb_meta_boxes', 'your_prefix_get_meta_box' );
 
 function MyAnimeList_API_Meta_Box($post){
 ?>

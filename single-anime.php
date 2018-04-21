@@ -93,6 +93,92 @@ echo get_the_term_list($post->ID, 'tipe', '', ', ', '');
 <div class='dbsp show'>
 <?php the_content(); ?>
 </div>
+<div class="info2" id="Info">
+   <h5><span class="fa fa-info"></span> Info</h5>
+   <table>
+      <tbody>
+      <tr>
+            <td class="tablex">Status <span>:</span></td>
+            <td>Currently Airing</td>
+         </tr>
+         <tr>
+         <tr>
+            <td class="tablex">Durasi Per Episode <span>:</span></td>
+            <td>24 Menit</td>
+         </tr>
+         <tr>
+            <td class="tablex">Rating <span>:</span></td>
+            <td class="ratingx">7.88 </td>
+         </tr>
+         <tr>
+            <td class="tablex">Studio <span>:</span></td>
+            <td>A-1 Pictures</td>
+         </tr>
+         <tr>
+            <td class="tablex">Series <span>:</span></td>
+            <td class="seriesx"><a href="http://nimegami.com/anime/wotaku-ni-koi-wa-muzukashii/" rel="tag" data-wpel-link="internal">Wotaku ni Koi wa Muzukashii</a></td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+<div class="download" id="LinkDownload"><h5><span class="fa fa-cloud-download"></span> Download Links</h5>
+<?php $link = get_post_meta(get_the_ID(),'prefix-link',true);
+$cekMovie = get_post_meta(get_the_ID(),'prefix-movie',true);
+foreach($link as $links){
+  $nama = explode(" ",$links['Nama']);
+  $namaFinal = '';
+  $namaBatch = '';
+  if($links['Episode']=='Batch'){
+    $namaBatch = 'Batch';
+  } else if($links['Episode']!=='Movie'){
+    $namaFinal = ' Episode '.$links['Episode'];
+  };
+  echo '<h4>';the_title(); echo $namaFinal.' Subtitle Indonesia '.$namaBatch.'</h4>';
+  echo '<ul>';
+  if($links['720p']!==''){
+    $i=0;
+    echo '<li><strong>720p</strong>';
+    $pecah = explode(" ",$links['720p']);
+    foreach($pecah as $petjah){
+      echo '<a href='.$petjah.'data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
+      $i++;
+    }
+    echo '</li>';
+  }
+  if($links['480p']!==''){
+    $i=0;
+    echo '<li><strong>480p</strong>';
+    $pecah = explode(" ",$links['480p']);
+    foreach($pecah as $petjah){
+      echo '<a href='.$petjah.'data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
+      $i++;
+    }
+    echo '</li>';
+  }
+  if($links['360p']!==''){
+    $i=0;
+    echo '<li><strong>360p</strong>';
+    $pecah = explode(" ",$links['360p']);
+    foreach($pecah as $petjah){
+      echo '<a href='.$petjah.'data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
+      $i++;
+    }
+    echo '</li>';
+  }
+  if($links['240p']!==''){
+    $i=0;
+    echo '<li><strong>240p</strong>';
+    $pecah = explode(" ",$links['240p']);
+    foreach($pecah as $petjah){
+      echo '<a href='.$petjah.'data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
+      $i++;
+    }
+    echo '</li>';
+  }
+  echo '</ul>';
+};
+?>
+</div>
 <div class="commentar">
 <h5><i class="fa fa-comments"></i> Comment <span><?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></span></h5>
 <div class="commentwrapper"><ul><?php comments_template(); ?></ul></div>
