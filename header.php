@@ -41,7 +41,7 @@
 
 <!-- Start -->
 <div id="awalsemua">
-	
+<!-- Header -->	
 <div class="header-fix">
 				<div class="wrap">
 				<div class="logo">
@@ -81,8 +81,11 @@
     <?php echo do_shortcode('[wpdreams_ajaxsearchlite]'); ?>
   </div>
 </div>
+</div>
+
+<!-- Header End -->
+
 <style>
-@import "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css";
 .search {
     position: relative;
     display: inline-block;
