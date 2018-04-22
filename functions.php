@@ -198,11 +198,6 @@ new MultiPostThumbnails(
  );
 }
 
-add_action( 'wp_enqueue_scripts', 'my_custom_script_load' );
-function my_custom_script_load(){
-  wp_enqueue_script( 'owl.carousel.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js', array() );
-}
-
 /* Ajax Animelist */
 add_action( 'wp_ajax_animelist_ajax', 'animelist_ajax' );
 add_action( 'wp_ajax_nopriv_animelist_ajax', 'animelist_ajax' ); 
