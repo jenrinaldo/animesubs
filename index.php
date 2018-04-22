@@ -19,30 +19,9 @@
         </div>
         <div class="rapi">
             <div class="venz">
-                <div class = "cvf_pag_loading">
-                    <div id="products" class = "cvf_universal_container"></div>
+                <div class = "index_loading">
+                    <div id="products" class = "index_container"></div>
                 </div>
-                <script type="text/javascript">
-                jQuery(document).ready(function($) {
-                var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-                function cvf_load_all_posts(page){
-                    $(".cvf_pag_loading").fadeIn().css('background','#ccc');
-                    var data = {
-                        page: page,
-                        action: "demo-pagination-load-posts"
-                    };
-                    $.post(ajaxurl, data, function(response) {
-                        $(".cvf_universal_container").html(response);
-                        $(".cvf_pag_loading").css({'background':'none', 'transition':'all 1s ease-out'});
-                    });
-                }
-                cvf_load_all_posts(1);
-                $( ".cvf_universal_container .cvf-universal-pagination " ).on( "click", "li.active", function() {
-                    var page = $(this).attr('p');
-                    cvf_load_all_posts(page);
-                    });            
-                }); 
-            </script>
             </div>
         </div>
     </div>
@@ -70,77 +49,4 @@
 <?php get_sidebar(); ?>
 </div>
 </div>
-<style>
-.list-style-buttons{
-    float: right;
-    overflow: hidden;
-    display: inline-block;
-    padding: 0px 5px;
-    margin: auto;
-    background: #EB3349;
-    background: -webkit-linear-gradient(to right,rgba(212,17,103,0.01) 6%,#eb3349 200%);
-    background: linear-gradient(to right,rgba(212,17,103,0.01) 6%,#eb3349 200%);
-}
-.switcher i {
-    color:#fff;
-}
-.glyphicon { margin-right:5px; }
-.thumbnail
-{
-    margin-bottom: 20px;
-    padding: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-}
-
-.item.list-group-item
-{
-    float: none;
-    width: 100%;
-    background-color: #fff;
-    margin-bottom: 10px;
-}
-.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-{
-    background: #428bca;
-}
-
-.item.list-group-item .list-group-image
-{
-    margin-right: 10px;
-}
-.item.list-group-item .thumbnail
-{
-    margin-bottom: 0px;
-}
-.item.list-group-item .caption
-{
-    padding: 9px 9px 0px 9px;
-}
-.item.list-group-item:nth-of-type(odd)
-{
-    background: #eeeeee;
-}
-
-.item.list-group-item:before, .item.list-group-item:after
-{
-    display: table;
-    content: " ";
-}
-
-.item.list-group-item img
-{
-    float: left;
-}
-.item.list-group-item:after
-{
-    clear: both;
-}
-.list-group-item-text
-{
-    margin: 0 0 11px;
-}
-
-</style>
 <?php get_footer(); ?>

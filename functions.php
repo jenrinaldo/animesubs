@@ -357,9 +357,9 @@ function demo_load_my_posts() {
     
 }
 
-add_action( 'wp_ajax_demo-pagination-load-posts', 'cvf_demo_pagination_load_posts' );
+add_action( 'wp_ajax_index_ajax', 'cvf_demo_pagination_load_posts' );
 // We allow non-logged in users to access our pagination
-add_action( 'wp_ajax_nopriv_demo-pagination-load-posts', 'cvf_demo_pagination_load_posts' );
+add_action( 'wp_ajax_nopriv_index_ajax', 'cvf_demo_pagination_load_posts' );
 function cvf_demo_pagination_load_posts() {
     global $wpdb;
     // Set default variables
@@ -442,7 +442,7 @@ function cvf_demo_pagination_load_posts() {
 	// Pagination Buttons logic
 
 	$pag_container.= "
-        <div class='cvf-universal-paginations'>
+        <div class='index_paginations'>
             <ul>";
 	if ($first_btn && $cur_page > 1)
 		{

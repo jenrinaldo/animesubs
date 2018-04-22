@@ -1,52 +1,82 @@
-</div></div>
-<!-- End -->
-<!-- setwidget -->
-
-
+</div>
+</div>
 <div class="clear"></div>
 </div>
 <!-- End Wrapper -->
 <footer>
-<div class="footer">
-<!-- Footer Widget -->
-<!-- Start About -->
-<div class="about">
-<h5><span class="fa fa-question"></span> About</h5>
-<p><?php echo bloginfo('name'); ?> - Sebuah <b>Fanshare</b> tempat download anime gratis subtitle indonesia. Disini kami menyediakan anime dengan format mkv dan mp4. Ada banyak ukuran anime yang dishare disini, yaitu 480p, 720p, 360p, dan kadang kadang 240p.</p>
-<div class="clear"></div>
-</div>
-<!-- End About -->
-<div class="footerwidget">
-<h3><span class="fa fa-cog"></span> Recent Anime TV</h3>
-<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'tv', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
-<li><a href="<?php the_permalink(); ?>"><?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?></a></li>
-<?php endwhile; ?>
-</div>
-<!-- End Footer Widget -->
-<!-- Footer Widget -->
-<div class="footerwidget">
-<h3><span class="fa fa-cog"></span> Recent Anime Movie</h3>
-<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'movie', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
-<li><a href="<?php the_permalink(); ?>"><?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?></a></li>
-<?php endwhile; ?>
-</div>
-<!-- End Footer Widget -->
-<!-- Footer Widget -->
-<div class="footerwidget">
-<h3><span class="fa fa-cog"></span> Recent Anime OVA</h3>
-<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'ova', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
-<li><a href="<?php the_permalink(); ?>"><?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?></a></li>
-<?php endwhile; ?>
-</div>
-<!-- End Footer Widget -->
-</div>
+	<div class="footer">
+		<!-- Footer Widget -->
+		<!-- Start About -->
+		<div class="about">
+			<h5>
+				<span class="fa fa-question"></span> About 
+			</h5>
+			<p>
+				<?php echo bloginfo('name'); ?> - Sebuah 
+				<b>Fanshare</b> tempat download anime gratis subtitle indonesia. Disini kami menyediakan anime dengan format mkv dan mp4. Ada banyak ukuran anime yang dishare disini, yaitu 480p, 720p, 360p, dan kadang kadang 240p.
+			</p>
+			<div class="clear"></div>
+		</div>
+		<!-- End About -->
+		<div class="footerwidget">
+			<h3>
+				<span class="fa fa-cog"></span> Recent Anime TV
+			</h3>
+			<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'tv', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
+			<li>
+				<a href="
+					<?php the_permalink(); ?>">
+					<?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?>
+				</a>
+			</li>
+			<?php endwhile; ?>
+		</div>
+		<!-- End Footer Widget -->
+		<!-- Footer Widget -->
+		<div class="footerwidget">
+			<h3>
+				<span class="fa fa-cog"></span> Recent Anime Movie
+			</h3>
+			<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'movie', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
+			<li>
+				<a href="
+					<?php the_permalink(); ?>">
+					<?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?>
+				</a>
+			</li>
+			<?php endwhile; ?>
+		</div>
+		<!-- End Footer Widget -->
+		<!-- Footer Widget -->
+		<div class="footerwidget">
+			<h3>
+				<span class="fa fa-cog"></span> Recent Anime OVA
+			</h3>
+			<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'ova', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
+			<li>
+				<a href="
+					<?php the_permalink(); ?>">
+					<?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?>
+				</a>
+			</li>
+			<?php endwhile; ?>
+		</div>
+		<!-- End Footer Widget -->
+	</div>
 </footer>
 <div class="credit">
-<div class="credit2">Copyright <span class="fa fa-copyright"></span> <a href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a> - Design Template By <?php bloginfo('name'); ?></div>
+	<div class="credit2">Copyright 
+		<span class="fa fa-copyright"></span>
+		<a href="
+			<?php echo home_url('/'); ?>">
+			<?php bloginfo('name'); ?>
+		</a> - Design Template By 
+		<?php bloginfo('name'); ?>
+	</div>
 </div>
 <?php wp_footer(); ?>
-
 </div>
+
 <script>
         $('.ongoing_holder').slick({
         lazyLoad: 'ondemand',
@@ -90,21 +120,22 @@
         ]
     });
 </script>
+
    <style>
 .animelist_page_nav,.cvf-pagination-nav{
     width:100%;
     float:none;
     overflow:hidden;
 }
-.animelist_paginations ul, .cvf-universal-paginations ul {
+.animelist_paginations ul, .index_paginations ul {
 margin: auto;
     width: auto;
     margin-top: 10px;
 }
-.animelist_paginations ul li, .cvf-universal-paginations ul li {display: inline; margin: 3px; padding: 4px 8px; background: #FFF; color: black; float:left; }
-.animelist_paginations ul li.active:hover, .cvf-universal-paginations ul li.active:hover {cursor: pointer; background: #1E8CBE; color: white; }
-.animelist_paginations ul li.inactive, .cvf-universal-paginations ul li.inactive {background: #7E7E7E;}
-.animelist_paginations ul li.selected, .cvf-universal-paginations ul li.selected {background: #1E8CBE; color: white;}
+.animelist_paginations ul li, .index_paginations ul li {display: inline; margin: 3px; padding: 4px 8px; background: #FFF; color: black; float:left; }
+.animelist_paginations ul li.active:hover, .index_paginations ul li.active:hover {cursor: pointer; background: #1E8CBE; color: white; }
+.animelist_paginations ul li.inactive, .index_paginations ul li.inactive {background: #7E7E7E;}
+.animelist_paginations ul li.selected, .index_paginations ul li.selected {background: #1E8CBE; color: white;}
    </style>
 <script async type='text/javascript'>
 $(function() {
@@ -137,20 +168,20 @@ var URLs = 'index';
  jQuery(document).ready(function(n) {
          var a = "<?php echo admin_url('admin-ajax.php'); ?>";
      function c(c) {
-         n(".cvf_pag_loading").fadeIn().css("background", "#ccc");
+         n(".index_loading").fadeIn().css("background", "#ccc");
          var i = {
              page: c,
-             action: "demo-pagination-load-posts",
+             action: "index_ajax",
              'post_id': URLs,
          };
          n.post(a, i, function(a) {
-             n(".cvf_universal_container").html(a), n(".cvf_pag_loading").css({
+             n(".index_container").html(a), n(".index_loading").css({
                  background: "none",
                  transition: "all 1s ease-out"
              })
          })
      }
-     c(1), n(".cvf_universal_container .cvf-universal-paginations li.active").live("click", function() {
+     c(1), n(".index_container .index_paginations li.active").live("click", function() {
          c(n(this).attr("p"))
      })
  });</script>
