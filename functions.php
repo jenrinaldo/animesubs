@@ -248,7 +248,7 @@ function animelist_ajax() {
                 $count=0;
                 $term = get_the_terms($post->ID, 'tipe');
                 $cekBD = get_post_meta( $post->ID, 'jensan-bd', true );
-                if($cekBD!=''){
+                if($cekBD){
                     $BD = '<div class="spekBD">BD</div>';
                 } else {
                     $BD = '';
