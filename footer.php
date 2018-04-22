@@ -181,22 +181,6 @@
     });
 </script>
 
-   <style>
-.animelist_page_nav,.cvf-pagination-nav{
-    width:100%;
-    float:none;
-    overflow:hidden;
-}
-.animelist_paginations ul, .index_paginations ul {
-margin: auto;
-    width: auto;
-    margin-top: 10px;
-}
-.animelist_paginations ul li, .index_paginations ul li {display: inline; margin: 3px; padding: 4px 8px; background: #FFF; color: black; float:left; }
-.animelist_paginations ul li.active:hover, .index_paginations ul li.active:hover {cursor: pointer; background: #1E8CBE; color: white; }
-.animelist_paginations ul li.inactive, .index_paginations ul li.inactive {background: #7E7E7E;}
-.animelist_paginations ul li.selected, .index_paginations ul li.selected {background: #1E8CBE; color: white;}
-   </style>
 <script async type='text/javascript'>
 $(function() {
 var showTotalChar = 200, hideChar = "Show More (+)", showChar = "Show Less (-)";

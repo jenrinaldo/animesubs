@@ -2,7 +2,7 @@
 
 <div class="venser">
 
-<div class="rvad">
+<div class="rvads">
         <h1>
                 <span>
                         <?php single_tag_title();?>
