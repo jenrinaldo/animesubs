@@ -60,7 +60,6 @@ if (is_home()) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css" as="style">
 <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri()?>/js/slick.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri()?>/js/slick-theme.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js" type="text/javascript" ></script>
 <?php wp_head(); ?>
