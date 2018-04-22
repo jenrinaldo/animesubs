@@ -64,7 +64,7 @@ function jensan_meta_box( $meta_boxes ) {
 			array(
 				"id" => $prefix . "synonyms",
 				"type" => "text",
-				"name" => esc_html__( "Synonyms", "shirozare" ),
+				"name" => esc_html__( "Synonyms", "jensan" ),
 			),
 			array(
 				"id" => "information",
@@ -176,7 +176,7 @@ function MyAnimeList_API_Meta_Box($post){
 <div class="rwmb-meta-box">
 	<div class="rwmb-field rwmb-text-wrapper">
 		<div class="rwmb-label">
-			<label for="jensan-myanimelist-api">MyAnimeList API</label>		
+			<label for="jensan-myanimelist-api">MyAnimeList API</label>
 		</div>
 		<div class="rwmb-input ui-shortable">
 			<div class="rwmb-clone rwmb-text-clone">
