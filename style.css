@@ -190,11 +190,6 @@ a:hover {
   color: #2693f1;
 }
 
-a:focus,
-a:hover {
-  color: none;
-}
-
 /* Reset Css */
 
 body {
@@ -245,7 +240,7 @@ body {
 
 .header .wrap {
   padding: 0px 10%;
-  widows: 100%;
+  width: 100%;
 }
 
 .header .wrap .logo {
@@ -393,7 +388,7 @@ a.boxclose span i {
 input[type="checkbox"],
 input[type="radio"] {
   margin: 0px 0 0;
-  margin-top: 1px\9;
+  margin-top: 1px;
   line-height: normal;
 }
 
@@ -807,7 +802,6 @@ input[type="radio"] {
   cursor: pointer;
   color: transparent;
   border: none;
-  outline: none;
   background-color: #eb3349;
   border-radius: 50%;
 }
@@ -934,7 +928,7 @@ input[type="radio"] {
 
 .slick-dots li button:before {
   font-family: "FontAwesome";
-  font-size: 2rem;
+  font-size: 0.7rem;
   line-height: 20px;
   content: "\f111";
   position: absolute;
@@ -942,7 +936,6 @@ input[type="radio"] {
   left: 0;
   width: 20px;
   height: 20px;
-  content: "•";
   text-align: center;
   opacity: 0.25;
   color: black;
@@ -1076,7 +1069,7 @@ footer {
   width: 100%;
   padding: 1% 10%;
   margin: 0 auto;
-  background: url(https://wallup.net/wp-content/uploads/2015/12/192660-anime-anime_girls-long_hair-simple_background-black_hair-school_uniform-legs-skirt-bent_over-purple_eyes-Ga-Rei_Zero-Isayama_Yomi-anime_vectors-748x733.png)
+  background: url(/wp-content/uploads/2018/04/bg-footer.png)
     100% 20% no-repeat;
   background-size: auto 100%;
   position: relative;
@@ -1664,7 +1657,6 @@ textarea {
 .soralist ul li .spekBD {
   display: inline;
   font-weight: 400;
-  margin: 0 2px;
 }
 
 .soralist ul li a.series {
