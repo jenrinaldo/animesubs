@@ -71,7 +71,7 @@ $nama = array_pop($nama);
                 </b>
             	<?php echo get_the_term_list($post->ID,'series','','<span class="batasanseries">|</span>',''); ?>
 		    </li>
-		    <?php if($cekBD!=''){
+		    <?php if($cekBD){
                 echo  '<li class="statusBD"><span>BD</span></li>';
                 }?>
         </ul>
