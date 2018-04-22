@@ -1069,8 +1069,7 @@ footer {
   width: 100%;
   padding: 1% 10%;
   margin: 0 auto;
-  background: url(/wp-content/uploads/2018/04/bg-footer.png)
-    100% 20% no-repeat;
+  background: url(/wp-content/uploads/2018/04/bg-footer.png) 100% 20% no-repeat;
   background-size: auto 100%;
   position: relative;
   overflow: hidden;
@@ -2324,10 +2323,6 @@ h5.download::after {
   padding: 5px 2px;
   text-align: center;
   color: #fff;
-}
-
-.download ul li a:visited {
-  color: #e1933f;
 }
 
 .download ul li a {
