@@ -1,6 +1,6 @@
 <?php 
 wp_reset_postdata();
-$EpsNum = get_post_meta( $post->ID, 'current-episode', true );
+$EpsNum = get_post_meta( $post->ID, 'jensan-episode', true );
 $cekBD = get_post_meta( $post->ID, 'jensan-bd', true );
 $nama = wp_get_object_terms( $post->ID, 'tipe', array( 'fields' => 'names' ) );
 $nama = array_pop($nama);

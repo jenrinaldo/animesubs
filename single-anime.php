@@ -113,8 +113,8 @@ echo  '</tbody></table>';
 ?>
 </div>
 <div class="download" id="LinkDownload"><h5><span class="fa fa-cloud-download"></span> Download Links</h5>
-<?php $link = get_post_meta(get_the_ID(),'prefix-link',true);
-$cekMovie = get_post_meta(get_the_ID(),'prefix-movie',true);
+<?php $link = get_post_meta(get_the_ID(),'jensan-link',true);
+$cekMovie = get_post_meta(get_the_ID(),'jensan-movie',true);
 foreach($link as $links){
   $namaFinal = '';
   $namaBatch = '';

@@ -28,6 +28,17 @@ function jensan_meta_box( $meta_boxes ) {
 			array(
 				'id' => 'jensan-meta-box',
 				'type' => 'heading',
+				'name' => esc_html__( 'Episode Sekarang', 'jensan' ),
+			),
+			array(
+				'id' => $prefix . 'episode',
+				'name' => esc_html__( 'Episode Sekarang', 'jensan' ),
+				'type' => 'text',
+				'desc' => esc_html__( 'Field for Current Episode Status', 'jensan' ),
+			),
+			array(
+				'id' => 'jensan-meta-box',
+				'type' => 'heading',
 				'name' => esc_html__( 'BD Status', 'jensan' ),
 			),
 			array(
