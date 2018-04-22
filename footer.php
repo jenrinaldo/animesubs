@@ -88,11 +88,14 @@
                 };
                 
                 $('form.post-list input').val(JSON.stringify(post_data));
-                
-                var data = {
-                    action: "demo_load_my_posts",
-                    data: JSON.parse($('form.post-list input').val())
+                var cek = $('form.post-list input').val();
+                if(typeof cek!=='undefined'){
+                    var data = {
+                    action: "animelist_ajax",
+                    data: JSON.parse(cek)
                 };
+                }
+                
                 
                 $.post(ajaxurl, data, function(response) {
                         // If successful Append the data into our html container
@@ -120,7 +123,7 @@
                 var th_name = $(th_active).attr('id');
                 
                 // Pagination Clicks                    
-                $('.animelist_container .animelist_pagination li.active').live('click',function(){
+                $(document).on('click','.animelist_container .animelist_pagination li.active',function(){
                     var page = $(this).attr('p');
                     animelist_ajax(page, th_name); 
                 }); 
@@ -238,7 +241,7 @@ var URLs = 'index';
              })
          })
      }
-     c(1), n(".index_container .index_paginations li.active").live("click", function() {
+     c(1), n(document).on("click",".index_container .index_paginations li.active", function() {
          c(n(this).attr("p"))
      })
  });</script>

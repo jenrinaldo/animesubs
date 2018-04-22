@@ -204,9 +204,9 @@ function my_custom_script_load(){
 }
 
 /* Ajax Animelist */
-add_action( 'wp_ajax_demo_load_my_posts', 'demo_load_my_posts' );
-add_action( 'wp_ajax_nopriv_demo_load_my_posts', 'demo_load_my_posts' ); 
-function demo_load_my_posts() {
+add_action( 'wp_ajax_animelist_ajax', 'animelist_ajax' );
+add_action( 'wp_ajax_nopriv_animelist_ajax', 'animelist_ajax' ); 
+function animelist_ajax() {
         
     global $wpdb; 
     
