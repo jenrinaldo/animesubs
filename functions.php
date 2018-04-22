@@ -3,6 +3,7 @@ require_once('inc/widget.php');
 require_once('inc/custom-post.php');
 require_once('inc/custom-functions.php');
 
+/* Sidebar */
 if ( function_exists('register_sidebar') )
     register_sidebar(array(
       'name' => 'Sidebar Right',
@@ -54,6 +55,7 @@ register_sidebar( array(
         'after_title' => '</h3>',
     ));
 
+/* Menu */
 add_action( 'init', 'register_my_menus' );
 function register_my_menus() {
   register_nav_menus(
@@ -63,15 +65,18 @@ function register_my_menus() {
     )
   );
 }
-
+/* Picture Quality */
 add_filter('jpeg_quality', function($arg){return 92;});
 add_action( 'after_setup_theme', 'mytheme_custom_thumbnail_size' );
 function mytheme_custom_thumbnail_size(){
-    add_image_size( 'thumb-small', 300, 9999, true ); // Hard crop to exact dimensions (crops sides or top and bottom)
-    add_image_size( 'thumb-medium', 520, 9999 ); // Crop to 520px width, unlimited height
-    add_image_size( 'thumb-large', 720, 340 ); // Soft proprtional crop to max 720px width, max 340px height
+    add_image_size( 'thumb-small', 100, 56, true );
+    add_image_size( 'thumb-medium', 190, 9999 );
+    add_image_size( 'thumb-large', 400, 225 );
 }
 get_the_post_thumbnail($id, array(200,200) );
+add_theme_support( 'post-thumbnails' );
+
+/* Random Post */
 add_action('init','random_add_rewrite');
 function random_add_rewrite() {
    global $wp;
@@ -79,17 +84,15 @@ function random_add_rewrite() {
    add_rewrite_rule('random/?$', 'index.php?random=1', 'top');
 }
 
-add_theme_support( 'post-thumbnails' );
-
+/* New Post */
 function post_from_today_class($class) {
-//add .new-post-today to post_class() if newer than 24hrs
     global $post;
     if( date('U') - get_the_modified_time('U', $post->ID) < 24*60*60 ) $class[] = 'new-post-today';
     return $class;
 }
-
 add_filter('post_class','post_from_today_class');
 
+/* Redirect Template */
 add_action('template_redirect','random_template');
 function random_template() {
    if (get_query_var('random') == 1) {
@@ -101,6 +104,8 @@ function random_template() {
            exit;
    }
 }
+
+/* Post View */
 function wpb_set_post_views($postID) {
     $count_key = 'wpb_post_views_count';
     $count = get_post_meta($postID, $count_key, true);
@@ -136,7 +141,7 @@ function wpb_get_post_views($postID){
     return $count.' Views';
 }
 
-
+/* Feedback Links */
 add_theme_support( 'automatic-feed-links' );
 function new_excerpt_more( $more ) {
   return '...';
@@ -171,7 +176,7 @@ wp_enqueue_style( 'dashicons' );
 add_theme_support('html5', array('search-form'));
 add_filter('show_admin_bar', '__return_false');
 
-// Multiple Bg
+/* Multiple Post Thumbnail */
 if (class_exists('MultiPostThumbnails')) {
 
 new MultiPostThumbnails(
@@ -192,10 +197,13 @@ new MultiPostThumbnails(
  )
  );
 }
+
 add_action( 'wp_enqueue_scripts', 'my_custom_script_load' );
 function my_custom_script_load(){
   wp_enqueue_script( 'owl.carousel.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js', array() );
 }
+
+/* Ajax Animelist */
 add_action( 'wp_ajax_demo_load_my_posts', 'demo_load_my_posts' );
 add_action( 'wp_ajax_nopriv_demo_load_my_posts', 'demo_load_my_posts' ); 
 function demo_load_my_posts() {
@@ -205,42 +213,35 @@ function demo_load_my_posts() {
     $msg = '';
     
     if( isset( $_POST['data']['page'] ) ){
-        // Always sanitize the posted fields to avoid SQL injections
-        $page = sanitize_text_field($_POST['data']['page']); // The page we are currently at
-        $name = sanitize_text_field($_POST['data']['th_name']);// The name of the column name we want to sort
+        $page = sanitize_text_field($_POST['data']['page']); 
+        $name = sanitize_text_field($_POST['data']['th_name']);
         $cur_page = $page;
         $page -= 1;
-        $per_page = 100; // Number of items to display per page
+        $per_page = 100; 
         $previous_btn = true;
         $next_btn = true;
         $first_btn = true;
         $last_btn = true;
         $start = $page * $per_page;
         
-        // The table we are querying from   
+       
         $posts = $wpdb->prefix . "posts";
         $where_search = '';
         
-        // Check if there is a string inputted on the search box
         if($_POST['data']['th_name']!=='post_title'){
-            // If a string is inputted, include an additional query logic to our main query to filter the results
             $where_search = ' AND (post_title LIKE "' . $name . '%") ';
         } else {
              $where_search='';
         } 
         
-        // Retrieve all the posts
         $all_posts = $wpdb->get_results($wpdb->prepare("
             SELECT * FROM $posts WHERE post_type = 'anime' AND post_status = 'publish' $where_search ORDER BY post_title ASC LIMIT %d, %d", $start, $per_page ) );
         
         $count = $wpdb->get_var($wpdb->prepare("
             SELECT COUNT(ID) FROM " . $posts . " WHERE post_type = 'anime' AND post_status = 'publish' $where_search", array() ) );
         
-        // Check if our query returns anything.
         if( $all_posts ):
             $msg .= '<div class="soralist"><ul>';
-            
-            
             $tv='tv';
             $movie='movie';
             $ova='ova';
@@ -248,7 +249,6 @@ function demo_load_my_posts() {
             $tvova = 'tvova';
             $tvspesial = 'tvspesial';
             $final ='';
-            // Iterate thru each item
             foreach( $all_posts as $key => $post ):
                 $count=0;
                 $term = get_the_terms($post->ID, 'tipe');
@@ -279,13 +279,12 @@ function demo_load_my_posts() {
             
             $msg .= '</ul></div>';
         
-        // If the query returns nothing, we throw an error message
         else:
             $msg .= '<p class = "bg-danger">No posts matching your search criteria were found.</p>';
             
         endif;
 
-        $msg = "<div class='cvf-universal-content'>" . $msg . "</div><br class = 'clear' />";
+        $msg = "<div class='animelist_content'>" . $msg . "</div><br class = 'clear' />";
         
         $no_of_paginations = ceil($count / $per_page);
 
@@ -308,7 +307,7 @@ function demo_load_my_posts() {
         }
           
         $pag_container .= "
-        <div class='cvf-universal-paginations'>
+        <div class='animelist_paginations'>
             <ul>";
 
         if ($first_btn && $cur_page > 1) {
@@ -350,7 +349,7 @@ function demo_load_my_posts() {
         
         echo 
         '<div class = "cvf-pagination-content">' . $msg . '</div>' . 
-        '<div class = "cvf-pagination-nav">' . $pag_container . '</div>';
+        '<div class = "animelist_page_nav">' . $pag_container . '</div>';
         
     }
     
@@ -358,7 +357,6 @@ function demo_load_my_posts() {
     
 }
 
-// Receive the Request post that came from AJAX
 add_action( 'wp_ajax_demo-pagination-load-posts', 'cvf_demo_pagination_load_posts' );
 // We allow non-logged in users to access our pagination
 add_action( 'wp_ajax_nopriv_demo-pagination-load-posts', 'cvf_demo_pagination_load_posts' );

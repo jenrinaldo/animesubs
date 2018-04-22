@@ -67,7 +67,7 @@ echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" d
             var th_name = 'post_title';
             var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
             
-            function cvf_load_all_posts(page, th_name){
+            function animelist_ajax(page, th_name){
                 var post_data = {
                     page: page,
                     th_name: th_name
@@ -82,9 +82,9 @@ echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" d
                 
                 $.post(ajaxurl, data, function(response) {
                         // If successful Append the data into our html container
-                        $(".cvf_universal_container").html(response);
+                        $(".animelist_container").html(response);
                         // End the transition
-                        $(".cvf_pag_loading").css({'background':'none', 'transition':'all 1s ease-out'});
+                        $(".animelist_page_loading").css({'background':'none', 'transition':'all 1s ease-out'});
                     });
             } 
             
@@ -96,34 +96,34 @@ echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" d
                 if($('form.post-list input').val()){
                     // Submit hidden form input value to load previous page number
                     data = JSON.parse($('form.post-list input').val());
-                    cvf_load_all_posts(data.page, data.th_name);
+                    animelist_ajax(data.page, data.th_name);
                 } else {
                     // Load first page
-                    cvf_load_all_posts(1, 'post_title');
+                    animelist_ajax(1, 'post_title');
                 }
                 
                 var th_active = $('.table-post-list th.active');
                 var th_name = $(th_active).attr('id');
                 
                 // Pagination Clicks                    
-                $('.cvf_universal_container .cvf-universal-pagination li.active').live('click',function(){
+                $('.animelist_container .animelist_pagination li.active').live('click',function(){
                     var page = $(this).attr('p');
-                    cvf_load_all_posts(page, th_name); 
+                    animelist_ajax(page, th_name); 
                 }); 
                 $('.navlist a').click(function() {
                 var text = $(this).attr('data-id');
                 if(text=='all'){
-                    cvf_load_all_posts(1, 'post_title');
+                    animelist_ajax(1, 'post_title');
                 } else {
-                    cvf_load_all_posts(1, text);
+                    animelist_ajax(1, text);
                 }
                 });
             }); 
             </script>
             
-            <div class = "cvf_pag_loading no-padding">
-                <div class = "cvf_universal_container">
-                    <div class="cvf-universal-content"></div>
+            <div class = "animelist_page_loading no-padding">
+                <div class = "animelist_container">
+                    <div class="animelist_content"></div>
                 </div>
             </div>
         </div>

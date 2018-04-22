@@ -48,20 +48,20 @@
 
 </div>
    <style>
-.cvf-pagination-nav{
+.animelist_page_nav,.cvf-pagination-nav{
     width:100%;
     float:none;
     overflow:hidden;
 }
-.cvf-universal-paginations ul {
+.animelist_paginations ul, .cvf-universal-paginations ul {
 margin: auto;
     width: auto;
     margin-top: 10px;
 }
-.cvf-universal-paginations ul li {display: inline; margin: 3px; padding: 4px 8px; background: #FFF; color: black; float:left; }
-.cvf-universal-paginations ul li.active:hover {cursor: pointer; background: #1E8CBE; color: white; }
-.cvf-universal-paginations ul li.inactive {background: #7E7E7E;}
-.cvf-universal-paginations ul li.selected {background: #1E8CBE; color: white;}
+.animelist_paginations ul li, .cvf-universal-paginations ul li {display: inline; margin: 3px; padding: 4px 8px; background: #FFF; color: black; float:left; }
+.animelist_paginations ul li.active:hover, .cvf-universal-paginations ul li.active:hover {cursor: pointer; background: #1E8CBE; color: white; }
+.animelist_paginations ul li.inactive, .cvf-universal-paginations ul li.inactive {background: #7E7E7E;}
+.animelist_paginations ul li.selected, .cvf-universal-paginations ul li.selected {background: #1E8CBE; color: white;}
    </style>
 <script async type='text/javascript'>
 $(function() {
