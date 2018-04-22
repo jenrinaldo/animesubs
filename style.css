@@ -1,8 +1,11 @@
 /**
 
 Theme Name: Animesubs
-Theme Version: 2.1
-Author : Jenrinaldo
+Theme URI: https://animesubs.net/
+Author: Jenrinaldo Tampubolon
+Author URI: https://animesubs.net/
+Description: Wordpress Theme for anime web download.
+Version: 2.1
 
 */
 
@@ -2583,7 +2586,6 @@ h5.download::after {
     margin: 0.44em 0.5em;
     font-size: 0.8em;
   }
-
 }
 
 @media only screen and (max-width: 640px) and (min-width: 480px) {
@@ -2677,83 +2679,84 @@ h5.download::after {
 /* Responsive Costum */
 
 @media only screen and (max-width: 835px) and (min-width: 240px) {
-    .nav-icon {
-      margin: 0.7% 2% 0 1%;
-      display: flex;
-    }
-    a.boxclose {
-      right: 0.3em;
-      top: 0.8em;
-      display: flex;
-    }
-    .nav-icon {
-      margin: 0.7% 2% 0 1%;
-      display: flex;
-    }
-    .menu_box_list {
-      padding: 0.5em 0;
-      background: #0081f2;
-      width: 100%;
-      margin-right: 0;
-      padding-top: 1em;
-    }
-    .menu_box_list li a {
-      margin: 0.24em 0.5em;
-      font-size: 15px;
-      padding: 5px;
-      text-align: center;
-    }
-    .menu_box_list ul li {
-      display: block;
-    }
-    .box {
-      right: -250px;
-      top: 55px;
-      position: absolute;
-      width: 30%;
-    }
+  .nav-icon {
+    margin: 0.7% 2% 0 1%;
+    display: flex;
   }
-  
-  @media only screen and (max-width: 768px) and (min-width: 240px) {
-    .bgg .dbinfo,
-    .bgg .bottomnav .l {
-      margin-left: 170px;
-    }
+  a.boxclose {
+    right: 0.3em;
+    top: 0.8em;
+    display: flex;
   }
-  
-  @media only screen and (max-width: 640px) {
-    .footerwidget {
-      width: 100% !important;
-    }
-    .footerwidget h3 {
-      text-align: center !important;
-    }
+  .nav-icon {
+    margin: 0.7% 2% 0 1%;
+    display: flex;
   }
-  
-  @media only screen and (max-width: 570px) {
-    .bgg .dbcov {
-      display: none;
-    }
-    .bgg .dbinfo,
-    .bgg .bottomnav .l {
-      margin-left: 0;
-    }
-    .dbtab,
-    .genre {
-      margin-left: 5px !important;
-    }
+  .menu_box_list {
+    padding: 0.5em 0;
+    background: #0081f2;
+    width: 100%;
+    margin-right: 0;
+    padding-top: 1em;
   }
-  
-  @media only screen and (max-width: 453px) and (min-width: 240px) {
-    .search {
-      position: absolute !important;
-      right: 7%;
-    }
-    .nav-icon {
-      margin: 0.7% 3% 0 1%;
-      display: flex;
-    }
-    .genres li, .seasonss li{
-        width: 100%;
-    }
+  .menu_box_list li a {
+    margin: 0.24em 0.5em;
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
   }
+  .menu_box_list ul li {
+    display: block;
+  }
+  .box {
+    right: -250px;
+    top: 55px;
+    position: absolute;
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 240px) {
+  .bgg .dbinfo,
+  .bgg .bottomnav .l {
+    margin-left: 170px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .footerwidget {
+    width: 100% !important;
+  }
+  .footerwidget h3 {
+    text-align: center !important;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .bgg .dbcov {
+    display: none;
+  }
+  .bgg .dbinfo,
+  .bgg .bottomnav .l {
+    margin-left: 0;
+  }
+  .dbtab,
+  .genre {
+    margin-left: 5px !important;
+  }
+}
+
+@media only screen and (max-width: 453px) and (min-width: 240px) {
+  .search {
+    position: absolute !important;
+    right: 7%;
+  }
+  .nav-icon {
+    margin: 0.7% 3% 0 1%;
+    display: flex;
+  }
+  .genres li,
+  .seasonss li {
+    width: 100%;
+  }
+}
