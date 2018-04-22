@@ -58,14 +58,11 @@ if (is_home()) {
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri() . "/style.css" ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css" as="style">
-<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri()?>/js/slick.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js" type="text/javascript" ></script>
+<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri()?>/js/slick.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/slick.min.js"></script>
 <div class='body_wrapper'>
     <!-- Header -->	
@@ -188,7 +185,7 @@ if (is_home()) {
             <!-- Ongoing Carousel End -->
             <!-- Content Wrapper -->
             <div class='wrapper'>
-<<script>
+<script>
     $('.ongoing_holder').slick({
   dots: true,
   infinite: false,

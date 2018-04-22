@@ -78,7 +78,7 @@
 {
     display: none;
     float: left;
-
+    margin: 0 2px;
     height: 100%;
     min-height: 1px;
 }
