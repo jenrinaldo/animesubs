@@ -113,7 +113,7 @@ var URLs = 'index';
  });</script>
  <script async>
 // Owl Carousel js
-function buttonUp(){var o=$(".searchbox-input").val();0!==(o=$.trim(o).length)?$(".searchbox-icon").css("display","block"):($(".searchbox-input").val(""),$(".searchbox-icon").css("display","block"))}$(document).ready(function(){$("#owl-demo").owlCarousel({loop:!0,margin:10,autoplay:!0,lazyContent:!0,responsiveClass:!0,responsive:{0:{items:2,nav:!1},600:{items:3,nav:!1},1e3:{items:4,nav:!1}}})}),$(document).ready(function(){var o=$(".searchbox-icon"),e=$(".searchbox-input"),n=$(".searchbox"),s=!1;o.click(function(){0==s?(n.addClass("searchbox-open"),e.focus(),s=!0):(n.removeClass("searchbox-open"),e.focusout(),s=!1)}),o.mouseup(function(){return!1}),n.mouseup(function(){return!1}),$(document).mouseup(function(){1==s&&($(".searchbox-icon").css("display","block"),o.click())})});var $=jQuery.noConflict();$(function(){$("#activator").click(function(){$("#box").animate({right:"0px"},500)}),$("#boxclose").click(function(){$("#box").animate({right:"-700px"},500)})}),$(document).ready(function(){$(".toggle_container").hide(),$(".trigger").click(function(){return $(this).toggleClass("active").next().slideToggle("slow"),!1})}),$(document).ready(function(){var o=$(".wp-pagenavi");console.log(o),0!=o.length&&($("span.current").remove(),$("a.page.larger").remove(),$("a.page.smaller").remove(),$("a.previouspostslink").css({"font-size":"1.5rem"}),$("a.nextpostslink").css({"font-size":"1.5rem"}))});  
+function buttonUp(){var o=$(".searchbox-input").val();0!==(o=$.trim(o).length)?$(".searchbox-icon").css("display","block"):($(".searchbox-input").val(""),$(".searchbox-icon").css("display","block"))}$(document).ready(function(){$("#owl-demo").owlCarousel({loop:!0,margin:10,autoplay:!0,lazyContent:!0,responsiveClass:!0,responsive:{0:{items:2,nav:!1},600:{items:3,nav:1},1e3:{items:4,nav:1}}})}),$(document).ready(function(){var o=$(".searchbox-icon"),e=$(".searchbox-input"),n=$(".searchbox"),s=!1;o.click(function(){0==s?(n.addClass("searchbox-open"),e.focus(),s=!0):(n.removeClass("searchbox-open"),e.focusout(),s=!1)}),o.mouseup(function(){return!1}),n.mouseup(function(){return!1}),$(document).mouseup(function(){1==s&&($(".searchbox-icon").css("display","block"),o.click())})});var $=jQuery.noConflict();$(function(){$("#activator").click(function(){$("#box").animate({right:"0px"},500)}),$("#boxclose").click(function(){$("#box").animate({right:"-700px"},500)})}),$(document).ready(function(){$(".toggle_container").hide(),$(".trigger").click(function(){return $(this).toggleClass("active").next().slideToggle("slow"),!1})}),$(document).ready(function(){var o=$(".wp-pagenavi");console.log(o),0!=o.length&&($("span.current").remove(),$("a.page.larger").remove(),$("a.page.smaller").remove(),$("a.previouspostslink").css({"font-size":"1.5rem"}),$("a.nextpostslink").css({"font-size":"1.5rem"}))});  
 </script>
 <script>
 $(document).ready(function() {
@@ -225,6 +225,7 @@ $(document).ready( function() {
         }, 700);
     });
 }
+
 </script>
 </BODY>
 </html>
