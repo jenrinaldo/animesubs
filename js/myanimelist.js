@@ -7,7 +7,7 @@ jQuery("#jensan-myanimelist-api-generate").on("click", function(){
 			jQuery("#new-tag-genre").val(data["genres"]);
 			jQuery("#new-tag-season").val(data["premiered"]);
 			jQuery("#new-tag-producer").val(data["producers"]);
-			jQuery("#new-tag-tipe").val(data["tipe"]);
+			jQuery("#new-tag-tipe").val(data["type"]);
 			jQuery("#content.wp-editor-area").val(data["synopsis"]);
 			jQuery("input[name=\"post_title\"]#title").val(data["title"]);
 			jQuery.each(data, function(key, value){
