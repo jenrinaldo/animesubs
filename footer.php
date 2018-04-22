@@ -77,6 +77,63 @@
 <?php wp_footer(); ?>
 </div>
 
+<script type="text/javascript">
+            var th_name = 'post_title';
+            var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+            
+            function animelist_ajax(page, th_name){
+                var post_data = {
+                    page: page,
+                    th_name: th_name
+                };
+                
+                $('form.post-list input').val(JSON.stringify(post_data));
+                
+                var data = {
+                    action: "demo_load_my_posts",
+                    data: JSON.parse($('form.post-list input').val())
+                };
+                
+                $.post(ajaxurl, data, function(response) {
+                        // If successful Append the data into our html container
+                        $(".animelist_container").html(response);
+                        // End the transition
+                        $(".animelist_page_loading").css({'background':'none', 'transition':'all 1s ease-out'});
+                    });
+            } 
+            
+            jQuery(document).ready(function($) {                                                                
+                
+                // Initialize default item to sort and it's sort order
+                
+                // Check if our hidden form input is not empty, meaning it's not the first time viewing the page.
+                if($('form.post-list input').val()){
+                    // Submit hidden form input value to load previous page number
+                    data = JSON.parse($('form.post-list input').val());
+                    animelist_ajax(data.page, data.th_name);
+                } else {
+                    // Load first page
+                    animelist_ajax(1, 'post_title');
+                }
+                
+                var th_active = $('.table-post-list th.active');
+                var th_name = $(th_active).attr('id');
+                
+                // Pagination Clicks                    
+                $('.animelist_container .animelist_pagination li.active').live('click',function(){
+                    var page = $(this).attr('p');
+                    animelist_ajax(page, th_name); 
+                }); 
+                $('.navlist a').click(function() {
+                var text = $(this).attr('data-id');
+                if(text=='all'){
+                    animelist_ajax(1, 'post_title');
+                } else {
+                    animelist_ajax(1, text);
+                }
+                });
+            }); 
+            </script>
 <script>
         $('.ongoing_holder').slick({
         lazyLoad: 'ondemand',
