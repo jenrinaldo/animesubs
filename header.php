@@ -58,12 +58,13 @@ if (is_home()) {
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri() . "/style.css" ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style">
-<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri()?>/js/slick.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/slick.min.js"></script>
+
 <div class='body_wrapper'>
     <!-- Header -->	
     <div class="header">
@@ -156,7 +157,7 @@ if (is_home()) {
 							    <a href="<?php echo the_permalink() ?>" class="ongoing_hover_bottom">
                                     <div class="darken"></div>
                                     <?php
-                                    $imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'cover-image', $post->ID,'thumb'); 
+                                    $imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'depan-image', $post->ID,'thumb'); 
                                     $imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
                                     $str = $imageurl[0];
                                     echo "<img src='".$str."' title='".$post->post_title."' alt='".$post->post_title."'width='350' height='496'>"; }else { ?>
@@ -168,7 +169,7 @@ if (is_home()) {
                                         </svg>
                                     </div>
                                     <div class="ongoing_hold">
-                                        <div class="text">
+                                        <div class="text_ongoing">
                                             <h6>
                                                 <a href="<?php echo the_permalink() ?>"><?php the_title() ?></a>
                                             </h6>
@@ -179,54 +180,16 @@ if (is_home()) {
                         <?php endwhile; ?>
                 </div>				    
                 <div class="clear"></div>
-                <div style="margin-bottom:20px;"></div>
             </div> 
             <?php }?>
             <!-- Ongoing Carousel End -->
             <!-- Content Wrapper -->
             <div class='wrapper'>
 <script>
-    $('.ongoing_holder').slick({
-  dots: true,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});
-</script>
-<script>
-var slug = <?php echo json_encode($nama)?>;
-$(document).ready(
-    function() {
-        $("#link").attr("href", slug);
+    var slug = <?php echo json_encode($nama)?>;
+    $(document).ready(
+        function() {
+            $("#link").attr("href", slug);
         }
-        );
+    );
 </script>

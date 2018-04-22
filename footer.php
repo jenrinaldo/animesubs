@@ -47,6 +47,49 @@
 <?php wp_footer(); ?>
 
 </div>
+<script>
+        $('.ongoing_holder').slick({
+        lazyLoad: 'ondemand',
+        autoplay: true,
+        autoplaySpeed: 2000,
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 680,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 380,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+</script>
    <style>
 .animelist_page_nav,.cvf-pagination-nav{
     width:100%;
@@ -112,8 +155,29 @@ var URLs = 'index';
      })
  });</script>
  <script async>
-// Owl Carousel js
-function buttonUp(){var o=$(".searchbox-input").val();0!==(o=$.trim(o).length)?$(".searchbox-icon").css("display","block"):($(".searchbox-input").val(""),$(".searchbox-icon").css("display","block"))}$(document).ready(function(){$("#owl-demo").owlCarousel({loop:!0,margin:10,autoplay:!0,lazyContent:!0,responsiveClass:!0,responsive:{0:{items:2,nav:!1},600:{items:3,nav:1},1e3:{items:4,nav:1}}})}),$(document).ready(function(){var o=$(".searchbox-icon"),e=$(".searchbox-input"),n=$(".searchbox"),s=!1;o.click(function(){0==s?(n.addClass("searchbox-open"),e.focus(),s=!0):(n.removeClass("searchbox-open"),e.focusout(),s=!1)}),o.mouseup(function(){return!1}),n.mouseup(function(){return!1}),$(document).mouseup(function(){1==s&&($(".searchbox-icon").css("display","block"),o.click())})});var $=jQuery.noConflict();$(function(){$("#activator").click(function(){$("#box").animate({right:"0px"},500)}),$("#boxclose").click(function(){$("#box").animate({right:"-700px"},500)})}),$(document).ready(function(){$(".toggle_container").hide(),$(".trigger").click(function(){return $(this).toggleClass("active").next().slideToggle("slow"),!1})}),$(document).ready(function(){var o=$(".wp-pagenavi");console.log(o),0!=o.length&&($("span.current").remove(),$("a.page.larger").remove(),$("a.page.smaller").remove(),$("a.previouspostslink").css({"font-size":"1.5rem"}),$("a.nextpostslink").css({"font-size":"1.5rem"}))});  
+var $ = jQuery.noConflict();
+$(function() {
+    $("#activator").click(function() {
+        $("#box").animate({
+            right: "0px"
+        }, 500)
+    }), $("#boxclose").click(function() {
+        $("#box").animate({
+            right: "-700px"
+        }, 500)
+    })
+}), $(document).ready(function() {
+    $(".toggle_container").hide(), $(".trigger").click(function() {
+        return $(this).toggleClass("active").next().slideToggle("slow"), !1
+    })
+}), $(document).ready(function() {
+    var o = $(".wp-pagenavi");
+    console.log(o), 0 != o.length && ($("span.current").remove(), $("a.page.larger").remove(), $("a.page.smaller").remove(), $("a.previouspostslink").css({
+        "font-size": "1.5rem"
+    }), $("a.nextpostslink").css({
+        "font-size": "1.5rem"
+    }))
+});
 </script>
 <script>
 $(document).ready(function() {
