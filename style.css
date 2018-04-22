@@ -1,8 +1,8 @@
 /**
 
 Theme Name: Animesubs
-
-Theme Version: 2.0
+Theme Version: 2.1
+Author : Jenrinaldo
 
 */
 
@@ -1685,7 +1685,7 @@ textarea {
 
 .animelist_paginations ul li,
 .index_paginations ul li {
-  display: inline;
+  display: block;
   margin: 3px;
   padding: 4px 8px;
   background: #fff;
