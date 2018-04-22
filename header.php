@@ -57,7 +57,7 @@ if (is_home()) {
 }; ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri() . "/style.css" ?>">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" integrity="sha256-MmuZTsWcczT1IhH71aqQmja5jRcXy3mL/NOvjUy9tso=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
@@ -98,7 +98,7 @@ if (is_home()) {
             </div>       	  
             <div class="search">
                 <input class="search_box" type="checkbox" id="search_box">
-                <label class="icon-search" for="search_box"></label>
+                <label class="icon-search" for="search_box"><i class="fa fa-search"></i></label>
                 <div class="search_form">
                     <form action="#">
                         <input type="search" placeholder="Search......" name="s">
