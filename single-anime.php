@@ -151,7 +151,12 @@ foreach($link as $links){
       $i++;
     };
     $i=0;
-    foreach($pecah as $petjah){
+    foreach($pecah as $petjahl){
+      $a = 'drive';
+      if (strpos($petjahl,$a) !== false) {
+      $mentah = get_drive_id($petjahl);
+      $petjah = Drive($links[0]);
+      }
       echo '<a href='.$petjah.' data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
       $i++;
     }
@@ -161,7 +166,12 @@ foreach($link as $links){
     $i=0;
     echo '<li><strong>480p</strong>';
     $pecah = explode(" ",$links['480p']);
-    foreach($pecah as $petjah){
+    foreach($pecah as $petjahl){
+      $a = 'drive';
+      if (strpos($petjahl,$a) !== false) {
+      $mentah = get_drive_id($petjahl);
+      $petjah = Drive($links[0]);
+      }
       echo '<a href='.$petjah.'data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
       $i++;
     }
@@ -171,7 +181,12 @@ foreach($link as $links){
     $i=0;
     echo '<li><strong>360p</strong>';
     $pecah = explode(" ",$links['360p']);
-    foreach($pecah as $petjah){
+    foreach($pecah as $petjahl){
+      $a = 'drive';
+      if (strpos($petjahl,$a) !== false) {
+      $mentah = get_drive_id($petjahl);
+      $petjah = Drive($links[0]);
+      }
       echo '<a href='.$petjah.'data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
       $i++;
     }
@@ -181,7 +196,12 @@ foreach($link as $links){
     $i=0;
     echo '<li><strong>240p</strong>';
     $pecah = explode(" ",$links['240p']);
-    foreach($pecah as $petjah){
+    foreach($pecah as $petjahl){
+      $a = 'drive';
+      if (strpos($petjahl,$a) !== false) {
+      $mentah = get_drive_id($petjahl);
+      $petjah = Drive($links[0]);
+      }
       echo '<a href='.$petjah.'data-wpel-link="external" target="_new" rel="nofollow noopener noreferrer">'.$nama[$i].'</a>';
       $i++;
     }

@@ -43,7 +43,7 @@ get_header();
 					<a href="#X" data-id='X'>X</a>
 					<a href="#Y" data-id='Y'>Y</a>
 					<a href="#Z" data-id='Z'>Z</a>
-					<div class="clear"></div>
+					<br>
 					<a href="#0" data-id='0'>0</a>
 					<a href="#1" data-id='1'>1</a>
 					<a href="#2" data-id='2'>2</a>
@@ -68,6 +68,8 @@ get_header();
 						<li class="iniova">OVA</li>
 						<li class="inispecial">Special</li>
 						<li class="inimovie">Movie</li>
+						<li class="initvova">TV + OVA</li>
+						<li class="initvspecial">TV + Special</li>
 					</ul>
 				</div>
 				<div class="seasonss">

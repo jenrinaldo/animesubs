@@ -2,6 +2,7 @@
 require_once('inc/widget.php');
 require_once('inc/custom-post.php');
 require_once('inc/custom-functions.php');
+require_once('curl_gd.php');
 
 /* Sidebar */
 if ( function_exists('register_sidebar') )
@@ -257,15 +258,23 @@ function animelist_ajax() {
                     $count++;
                     $ters .= $terms->name.' ';
                 };
-                    if(is_object_in_term( $post->ID, 'tipe', 'TV' )){
-                    $final = $tv;
-                    } else if (is_object_in_term( $post->ID, 'tipe', 'Ova' )) {
-                    $final = $ova;
-                    } else if (is_object_in_term( $post->ID, 'tipe', 'Movie' )) {
-                    $final = $movie;
-                    } else if (is_object_in_term( $post->ID, 'tipe', 'Special' )) {
-                    $final = $special;
-                    }
+                if($count>1){
+                        if(is_object_in_term( $post->ID, 'tipe', 'Ova' )){
+                        $final = $tvova;
+                        } else {
+                            $final = $tvspesial;
+                        }
+                } else {
+                        if(is_object_in_term( $post->ID, 'tipe', 'TV' )){
+                        $final = $tv;
+                        } else if (is_object_in_term( $post->ID, 'tipe', 'Ova' )) {
+                        $final = $ova;
+                        } else if (is_object_in_term( $post->ID, 'tipe', 'Movie' )) {
+                        $final = $movie;
+                        } else if (is_object_in_term( $post->ID, 'tipe', 'Special' )) {
+                        $final = $special;
+                        }
+                }
                 $msg .= '
                     <li class="'.$final.'"><a class="series" data-id ="'.$ters.'" rel="'.$post->ID.'" href = "' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a>'.$BD.'<i class="fa fa-check"></i></li>
                 ';
