@@ -566,8 +566,8 @@ input[type="radio"] {
   padding: 10px 35px;
   width: auto;
   max-width: 100%;
-  color: #513710;
-  background: #ffebce;
+  color: #ffffff;
+  background: #ffa683;
   font-size: 13px;
   line-height: 20px;
   text-align: center;
@@ -581,7 +581,7 @@ input[type="radio"] {
   font-weight: 400;
   content: "\f488";
   font-size: 30px;
-  color: #ff980061;
+  color: #ffebce;
   top: 5px;
   left: 5px;
   position: absolute;
@@ -592,7 +592,7 @@ input[type="radio"] {
   line-height: normal;
   font-weight: 400;
   content: "\f488";
-  color: #ff980061;
+  color: #ffebce;
   font-size: 30px;
   right: 5px;
   top: 5px;
@@ -1910,12 +1910,10 @@ textarea {
 
 .list li.series {
   margin-bottom: 0;
-  color: #777;
 }
 
 .list li.statusBD {
   margin-bottom: 0;
-  color: #777;
 }
 
 .list li.statusBD span {
@@ -1923,9 +1921,9 @@ textarea {
   padding: 5px;
   border-radius: 3px;
   margin-right: 5px;
-  background: #ff4757;
+  background: #4ca4f9;
   font-size: 11px;
-  font-weight: bold;
+  font-weight: normal;
   transition: 0.2s;
   color: #ffffff;
 }
@@ -2275,7 +2273,7 @@ textarea {
   text-align: center;
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: 3px solid #ffa033;
+  border-bottom: 3px solid #4ca4f9;
   position: relative;
   color: #333;
 }
@@ -2283,7 +2281,7 @@ textarea {
 .download h5 span {
   padding: 5px;
   color: #fff;
-  background: #eb912a;
+  background: #4ca4f9;
   border-radius: 3px;
 }
 
@@ -2299,9 +2297,9 @@ h5.download::after {
 .download h4 {
   font-size: 13px;
   padding: 5px;
-  background: #748290;
+  background: #4ca4f9;
   color: #fff;
-  border-left: 5px solid #47516e;
+  border-left: 8px solid #6db7f7;
 }
 
 .download ul {
@@ -2318,7 +2316,7 @@ h5.download::after {
 
 .download ul li strong {
   width: 40px;
-  background: #7b7fa1;
+  background: #ffa683;
   display: inline-block;
   padding: 5px 2px;
   text-align: center;
@@ -2364,7 +2362,7 @@ h5.download::after {
   margin: 3px;
   padding: 5px;
   border-radius: 3px;
-  background: #dc4b7a;
+  background: #ffa683;
   color: #fff;
   overflow: hidden;
   white-space: nowrap;
@@ -2375,7 +2373,7 @@ h5.download::after {
 
 .seasonswidget ul li a:hover {
   text-decoration: none;
-  background: #cc3063;
+  background: #83c5ff;
   transition: 0.2s ease-in-out;
 }
 
@@ -2394,9 +2392,11 @@ h5.download::after {
   color: #fff;
   padding: 8px;
   font-weight: 600;
-  background: #da4453;
+  background: #0081f2;
   text-transform: uppercase;
-  border-left: 8px solid #ff5e62;
+  border-left: 8px solid #6db7f7;
+  border-right: 8px solid #6db7f7;
+  text-align: center;
 }
 
 .area {
@@ -2423,12 +2423,9 @@ h5.download::after {
   margin-bottom: 5px;
   padding: 5px 0;
   overflow: hidden;
-  background: #e9e4f0;
+  border-bottom: 1px dashed #f4f4f4;
 }
 
-.polarpost:nth-child(2n + 1) {
-  background: #f4f4f4;
-}
 
 .polarco {
   overflow: hidden;
@@ -2437,7 +2434,7 @@ h5.download::after {
 
 .polargambar {
   float: left;
-  margin: 0 5px;
+  margin: 0;
   height: auto;
   width: auto;
   max-width: 25%;

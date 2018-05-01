@@ -42,33 +42,23 @@ $nama = array_pop($nama);
     <div class="info">
         <ul>
 		    <li>
-			    <b>
 				    <span class="fa fa-clock-o"></span> Date : 	
-    			</b>
 	    		<?php echo get_the_time('d F Y', $post->ID); ?>
 		    </li>
 		    <li>
-			    <b>
 				    <span class="fa fa-comments-o"></span> Comment  : 	
-    			</b>
 	    		<?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?>
 		    </li>
 		    <li class="category">
-			    <b>
 				    <span class="fa fa-tags"></span> Category :
-    			</b>
 	    		<?php echo get_the_term_list($post->ID, 'genre', '', ', ', ''); ?>
 		    </li>
 		    <li class="status">
-			    <b>
 				    <span class="fa fa-info-circle"></span> Status : 	
-    			</b>
 	    		<?php echo get_post_meta( $post->ID, 'jensan-status', true );?>
 		    </li>
 		    <li class="series">
-			    <b>
 				    <span class="fa fa-th-list"></span> Series : 	 
-                </b>
             	<?php echo get_the_term_list($post->ID,'series','','<span class="batasanseries">|</span>',''); ?>
 		    </li>
 		    <?php if($cekBD){
