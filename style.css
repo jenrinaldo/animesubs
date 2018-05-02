@@ -2287,27 +2287,7 @@ textarea {
   padding: 10px;
 }
 
-.dbsp .showmoretxt {
-  background: transparent;
-  color: #da4453;
-  cursor: pointer;
-  float: left;
-  width: 100%;
-  font-size: 0.7rem;
-  text-align: center;
-  text-transform: uppercase;
-}
 
-.dbsp .showmoretxt a {
-  color: #da4453;
-  text-decoration: none;
-}
-
-.dbsp .showmoretxt:hover {
-  cursor: pointer;
-  background-color: #221f1f;
-  color: #f9f9f9;
-}
 .info2,
 .subheading h2 {
   margin-bottom: 10px;
@@ -2496,7 +2476,7 @@ width: 100%;
   color:#fff;
   opacity:.8;
   position:absolute;
-  top:7%;
+  top:4%;
   font-size:12px
 }
 .rating,.typerecomended a{
@@ -2789,6 +2769,9 @@ width: 100%;
   .gridmode {
     width: 49%;
   }
+  .recomendedanime li {
+    width: 30%
+  }
   .gridmode:nth-child(even) {
     float: right;
     margin-right: 0;
@@ -2808,6 +2791,9 @@ width: 100%;
   .gridmode,
   .grid-thumbz {
     width: 100%;
+  }
+  .recomendedanime li {
+    width: 40%
   }
   #sidebar {
     float: left;
@@ -2842,6 +2828,9 @@ width: 100%;
   .gridmode,
   .venser {
     width: 100%;
+  }
+  .recomendedanime li {
+    width: 49%
   }
   #sidebar {
     float: left;
