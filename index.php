@@ -6,10 +6,10 @@
                 <span>Latest Update</span>
                 <span class="list-style-buttons">
                     <a href="#" id="list" class="switcher active">
-                        <i class="fa fa-list"></i>
+                        <i class="fas fa-list"></i>
                     </a>
                     <a href="#" id="grid" class="switcher">
-                        <i class="fa fa-th"></i>
+                        <i class="fas fa-th"></i>
                     </a>
                 </span>
                 <span>

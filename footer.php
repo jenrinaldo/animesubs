@@ -9,7 +9,7 @@
 		<!-- Start About -->
 		<div class="about">
 			<h5>
-				<span class="fa fa-question"></span> About 
+				<span class="fas fa-question"></span> About 
 			</h5>
 			<p>
 				<?php echo bloginfo('name'); ?> - Sebuah 
@@ -20,7 +20,7 @@
 		<!-- End About -->
 		<div class="footerwidget">
 			<h3>
-				<span class="fa fa-cog"></span> Recent Anime TV
+				<span class="fas fa-cog"></span> Recent Anime TV
 			</h3>
 			<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'tv', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
 			<li>
@@ -35,7 +35,7 @@
 		<!-- Footer Widget -->
 		<div class="footerwidget">
 			<h3>
-				<span class="fa fa-cog"></span> Recent Anime Movie
+				<span class="fas fa-cog"></span> Recent Anime Movie
 			</h3>
 			<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'movie', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
 			<li>
@@ -50,7 +50,7 @@
 		<!-- Footer Widget -->
 		<div class="footerwidget">
 			<h3>
-				<span class="fa fa-cog"></span> Recent Anime OVA
+				<span class="fas fa-cog"></span> Recent Anime OVA
 			</h3>
 			<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'ova', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
 			<li>
@@ -66,7 +66,7 @@
 </footer>
 <div class="credit">
 	<div class="credit2">Copyright 
-		<span class="fa fa-copyright"></span>
+		<span class="fas fa-copyright"></span>
 		<a href="
 			<?php echo home_url('/'); ?>">
 			<?php bloginfo('name'); ?>
@@ -305,9 +305,9 @@ $(document).ready(function() {
         $('a.btn.facebook').text('');
         $('a.btn.twitter').text('');
         $('a.btn.google').text('');
-        $('a.btn.facebook').append('<i class="fa fa-facebook"></i>');
-        $('a.btn.twitter').append('<i class="fa fa-twitter"></i>');
-        $('a.btn.google').append('<i class="fa fa-google-plus"></i>');
+        $('a.btn.facebook').append('<i class="fas fa-facebook"></i>');
+        $('a.btn.twitter').append('<i class="fas fa-twitter"></i>');
+        $('a.btn.google').append('<i class="fas fa-google-plus"></i>');
     }
 });
 
@@ -324,9 +324,9 @@ $(window).resize(function() {
         $('a.btn.facebook').text('');
         $('a.btn.twitter').text('');
         $('a.btn.google').text('');
-        $('a.btn.facebook').append('<i class="fa fa-facebook"></i>');
-        $('a.btn.twitter').append('<i class="fa fa-twitter"></i>');
-        $('a.btn.google').append('<i class="fa fa-google-plus"></i>');
+        $('a.btn.facebook').append('<i class="fas fa-facebook"></i>');
+        $('a.btn.twitter').append('<i class="fas fa-twitter"></i>');
+        $('a.btn.google').append('<i class="fas fa-google-plus"></i>');
     } else {
         $('a.btn.facebook').text('Facebook');
         $('a.btn.twitter').text('Twitter');

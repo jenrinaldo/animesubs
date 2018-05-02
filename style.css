@@ -830,7 +830,7 @@ input[type="radio"] {
 
 .slick-prev:before,
 .slick-next:before {
-  font-family: "FontAwesome";
+  font-family: "Font Awesome\ 5 Free";
   font-size: 2rem;
   line-height: 1;
   opacity: 100%;
@@ -850,11 +850,11 @@ input[type="radio"] {
 }
 
 .slick-prev:before {
-  content: "\f104";
+  content: "\f053";
 }
 
 [dir="rtl"] .slick-prev:before {
-  content: "\f105";
+  content: "\f054";
 }
 
 .slick-next {
@@ -867,11 +867,11 @@ input[type="radio"] {
 }
 
 .slick-next:before {
-  content: "\f105";
+  content: "\f054";
 }
 
 [dir="rtl"] .slick-next:before {
-  content: "\f104";
+  content: "\f053";
 }
 
 /* Arrows End */
@@ -928,7 +928,7 @@ input[type="radio"] {
 }
 
 .slick-dots li button:before {
-  font-family: "FontAwesome";
+  font-family: "Font Awesome\ 5 Free";
   font-size: 0.7rem;
   line-height: 20px;
   content: "\f111";
@@ -1503,7 +1503,7 @@ textarea {
 }
 
 .warnalist li:after {
-  font-family: FontAwesome;
+  font-family: 'Font Awesome\ 5 Free';
   content: "\f124";
   position: absolute;
   left: 0;
@@ -1931,7 +1931,7 @@ textarea {
 
 .list li.statusBD span::before {
   content: "\f00c";
-  font-family: FontAwesome;
+  font-family: 'Font Awesome\ 5 Free';
   padding: 3px;
   margin-right: 5px;
   color: #ffffff;
@@ -2286,7 +2286,6 @@ textarea {
   background: #eef2f3;
   padding: 10px;
 }
-
 
 .info2,
 .subheading h2 {

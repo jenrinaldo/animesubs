@@ -33,7 +33,7 @@ $video = str_replace($rep,'',$video);
 </style>
 <div class='dbinfo'>
 <div class='dbtab'>
-<h1 itemprop="name"><?php the_title(); ?><a class="minjs" href="#" onclick="toggle_visibility('alt-title');"><i class="fa fa-caret-left" aria-hidden="true"></i></a></h1>
+<h1 itemprop="name"><?php the_title(); ?><a class="minjs" href="#" onclick="toggle_visibility('alt-title');"><i class="fas fa-caret-left" aria-hidden="true"></i></a></h1>
 
 <div id="alt-title">
 			    <?php $english = get_post_meta( get_the_ID(), 'jensan-english', true ); if($english!==""){ echo $english." , ";}; ?>
@@ -43,7 +43,7 @@ $video = str_replace($rep,'',$video);
 <script type="text/javascript">
     $('.minjs').click(function(){
      $("#alt-title").toggle("slow");
-     $(this).find('i').toggleClass('fa fa-caret-left fa fa-caret-down');
+     $(this).find('i').toggleClass('fas fa-caret-left fas fa-caret-down');
      return false;
     
 });
@@ -100,12 +100,12 @@ echo get_the_term_list($post->ID, 'tipe', '', ', ', '');
 
 
 <?php setup_postdata(get_the_ID());?>
-<div class='dbsp show'>
+<div class='dbsp'>
 <?php the_content(); ?>
 </div>
 <div class="info2" id="Info">
 <?php 
-echo '<h5><span class="fa fa-info"></span> Info</h5><table><tbody>';
+echo '<h5><span class="fas fa-info-circle"></span> Info</h5><table><tbody>';
 if(!empty($episodes)) echo  '<tr><td class="tablex">Episode <span>:</span></td><td>'.$episodes.'</td></tr>';
 if(!empty($status)) echo  '<tr><td class="tablex">Status <span>:</span></td><td>'.$status.'</td></tr>';
 if(!empty($aired)) echo  '<tr><td class="tablex">Aired / Tayang <span>:</span></td><td>'.$aired.'</td></tr>';
@@ -119,7 +119,7 @@ if(!empty($score)) echo  '<tr><td class="tablex">Score <span>:</span></td><td>'.
 echo  '</tbody></table>';
 ?>
 </div>
-<div class="download" id="LinkDownload"><h5><span class="fa fa-cloud-download"></span> Download Links</h5>
+<div class="download" id="LinkDownload"><h5><span class="fas fa-cloud-download-alt"></span> Download Links</h5>
 <?php $link = get_post_meta(get_the_ID(),'jensan-link',true);
 $cekMovie = get_post_meta(get_the_ID(),'jensan-movie',true);
 foreach($link as $links){
@@ -220,7 +220,7 @@ foreach($link as $links){
 </div>
 <div class="clear"></div>
 <div class="keyword" itemscope itemtype="http://schema.org/CreativeWork">
-<h5><span class="fa fa-key"></span> Keyword</h5>
+<h5><span class="fas fa-key"></span> Keyword</h5>
 <div class="keying"><?php $meta = get_the_title();  echo '<span itemprop="keywords">'.$meta.' Sub Indo</span> , <span itemprop="keywords">'.$meta.' Batch</span> , <span itemprop="keywords">'.$meta.' 480p 720p 360p</span> , <span itemprop="keywords">'.$meta.' Mp4 Sub Indo</span> , <span itemprop="keywords">'.$meta.' MKV Sub Indo</span> , <span itemprop="keywords">'.$meta.' Subtitle Indonesia</span> , <span itemprop="keywords">Download Anime '.$meta.' Subtitle Indonesia'; ?></div>
 </div>
 <?php
@@ -230,7 +230,7 @@ if($seri[0]->count>1){
 ?>
 <div class="clear"></div>
 <div class='recomx'>
-<h5><span class="fa fa-link"></span> Related Anime</h5>
+<h5><span class="fas fa-link"></span> Related Anime</h5>
 <ul class='recomendedanime'>
 
 <?php $fix=$seri[0]->slug;$query = new WP_Query( array ('post__not_in' => array( $postid, ), 'posts_per_page' => 10, 'post_type' => 'anime','tax_query' => array(
@@ -259,7 +259,7 @@ $str = $imageurl[0];
 </div>
 <div class="clear"></div>
 <div class="commentar">
-<h5><span><i class="fa fa-comments"></span></i> Comment <span><?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></span></h5>
+<h5><span><i class="fas fa-comments"></span></i> Comment <span><?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></span></h5>
 <div class="commentwrapper"><ul><?php comments_template(); ?></ul></div>
 </div>
 <div style="margin-top:10px;"></div>

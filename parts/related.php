@@ -1,5 +1,5 @@
 <div class="ep">
-<h2 class='rel'><i class='fa fa-check-square-o'></i> Related Anime</h2>
+<h2 class='rel'><i class='fas fa-check-square-o'></i> Related Anime</h2>
 <ul>
 <?php $chap = get_the_ID($post->ID, "drama", true); ?>
 <?php

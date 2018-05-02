@@ -57,7 +57,7 @@ if (is_home()) {
 }; ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri() . "/style.css" ?>">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
@@ -73,7 +73,7 @@ if (is_home()) {
                 <a href="<?php echo( home_url() );?>"><span class="primary">AKA</span>Nime<svg viewBox="0 0 24 24" class="circle"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg>net</a>
             </div>
             <div class="nav-icon">
-                <a href="#" class="right_bt" id="activator"><span><i class="fa fa-bars"></i> </span> </a>
+                <a href="#" class="right_bt" id="activator"><span><i class="fas fa-bars"></i> </span> </a>
             </div>
             <div class="box" id="box">
                 <div class="box_content">        					                         
@@ -91,20 +91,20 @@ if (is_home()) {
                                         echo $nav_menu;
                                 ?>
                             </div>
-                            <a class="boxclose" id="boxclose"> <span><i class="fa fa-close"></i> </span></a>
+                            <a class="boxclose" id="boxclose"> <span><i class="fas fa-close"></i> </span></a>
                         </div>                                  
                     </div> 	
                 </div> 
             </div>       	  
             <div class="search">
                 <input class="search_box" type="checkbox" id="search_box">
-                <label class="icon-search" for="search_box"><i class="fa fa-search"></i></label>
+                <label class="icon-search" for="search_box"><i class="fas fa-search"></i></label>
                 <div class="search_form">
                     <form action="#">
                         <input type="search" placeholder="Search......" name="s">
                         <button type="submit" class="searchsubmit"/>
                             <span class="icon">
-                                <i class="fa fa-search"></i>
+                                <i class="fas fa-search"></i>
                             </span>   
                         </button>
                     </form>
@@ -116,7 +116,7 @@ if (is_home()) {
     <!-- Header End -->	
     <!-- Back to Top -->
     <div class="top">
-        <span class="fa fa-rocket"></span>
+        <span class="fas fa-rocket"></span>
     </div>
     <!-- Back to Top End -->
     <!-- Main Wrapper -->

@@ -99,7 +99,7 @@ echo get_the_term_list($post->ID, 'type', '', ', ', '');
 
 <div class='dbinfo'>
 <div class='dbtab'>
-<h1><?php the_title(); ?><a class="minjs" href="#" onclick="toggle_visibility('alt-title');"><i class="fa fa-caret-left" aria-hidden="true"></i></a></h1>
+<h1><?php the_title(); ?><a class="minjs" href="#" onclick="toggle_visibility('alt-title');"><i class="fas fa-caret-left" aria-hidden="true"></i></a></h1>
 
 <div id="alt-title">
 			    <?php $english = get_post_meta( get_the_ID(), 'jensan-english', true ); if($english!==""){ echo $english." , ";}; ?>
@@ -109,7 +109,7 @@ echo get_the_term_list($post->ID, 'type', '', ', ', '');
 <script type="text/javascript">
     $('.minjs').click(function(){
      $("#alt-title").toggle("slow");
-     $(this).find('i').toggleClass('fa fa-caret-left fa fa-caret-down');
+     $(this).find('i').toggleClass('fas fa-caret-left fas fa-caret-down');
      return false;
     
 });

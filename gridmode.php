@@ -41,23 +41,23 @@ $cekEps = ($EpsNum==$finaleps)? true:false;
     <div class="info">
         <ul>
 		    <li>
-				    <span class="fa fa-clock-o"></span> Date : 	
+				    <span class="fas fa-clock-o"></span> Date : 	
 	    		<?php echo get_the_time('d F Y', $post->ID); ?>
 		    </li>
 		    <li>
-				    <span class="fa fa-comments-o"></span> Comment  : 	
+				    <span class="fas fa-comments"></span> Comment  : 	
 	    		<?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?>
 		    </li>
 		    <li class="category">
-				    <span class="fa fa-tags"></span> Category :
+				    <span class="fas fa-tags"></span> Category :
 	    		<?php echo get_the_term_list($post->ID, 'genre', '', ', ', ''); ?>
 		    </li>
 		    <li class="status">
-				    <span class="fa fa-info-circle"></span> Status : 	
+				    <span class="fas fa-info-circle"></span> Status : 	
 	    		<?php echo get_post_meta( $post->ID, 'jensan-status', true );?>
 		    </li>
 		    <li class="series">
-				    <span class="fa fa-th-list"></span> Series : 	 
+				    <span class="fas fa-th-list"></span> Series : 	 
             	<?php echo get_the_term_list($post->ID,'series','','<span class="batasanseries">|</span>',''); ?>
 		    </li>
 		    <?php if($cekBD){
