@@ -17,7 +17,7 @@
                 </span>
             </h1>
         </div>
-        <div class="rapi">
+        <div class="rapi" itemtype="//schema.org/Blog">
             <div class="venz">
                 <div class = "index_loading">
                     <div id="products" class = "index_container"></div>

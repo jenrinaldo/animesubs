@@ -70,7 +70,7 @@ if (is_home()) {
     <div class="header">
         <div class="wrap">
             <div class="logo">
-                <a href="<?php echo( home_url() );?>"><span class="primary">Anime</span>subs<svg viewBox="0 0 24 24" class="circle"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg>net</a>
+                <a href="<?php echo( home_url() );?>"><span class="primary">AKA</span>Nime<svg viewBox="0 0 24 24" class="circle"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg>net</a>
             </div>
             <div class="nav-icon">
                 <a href="#" class="right_bt" id="activator"><span><i class="fa fa-bars"></i> </span> </a>

@@ -14,9 +14,12 @@ $licensors = get_post_meta( get_the_ID(), 'jensan-licensors', true );
 $broadcast = get_post_meta( get_the_ID(), 'jensan-broadcast', true );
 $source = get_post_meta( get_the_ID(), 'jensan-soruce', true );
 $rating = get_post_meta( get_the_ID(), 'jensan-rating', true );
+$video = get_post_meta(get_the_ID(),'jensan-pv',true);
+$rep = '&autoplay=1';
+$video = str_replace($rep,'',$video);
 ?>
 
-<div class="bg-big">
+<div class="bg-big" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
 <style>
   .bg-big { background-image: url(<?php echo $cover;?>); 
     height: 300px;
@@ -30,7 +33,7 @@ $rating = get_post_meta( get_the_ID(), 'jensan-rating', true );
 </style>
 <div class='dbinfo'>
 <div class='dbtab'>
-<h1><?php the_title(); ?><a class="minjs" href="#" onclick="toggle_visibility('alt-title');"><i class="fa fa-caret-left" aria-hidden="true"></i></a></h1>
+<h1 itemprop="name"><?php the_title(); ?><a class="minjs" href="#" onclick="toggle_visibility('alt-title');"><i class="fa fa-caret-left" aria-hidden="true"></i></a></h1>
 
 <div id="alt-title">
 			    <?php $english = get_post_meta( get_the_ID(), 'jensan-english', true ); if($english!==""){ echo $english." , ";}; ?>
@@ -55,6 +58,9 @@ echo get_the_term_list($post->ID, 'genre', '', ' ', '');
 
 </div>
 <div class="overlay"></div>
+<a href="#" data-tooltip="Watch trailer" class="trailer">
+  <svg viewBox="0 0 24 24" class="n-m"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+</a>
 </div>
 <div class="dbcov">
     <?php
@@ -64,6 +70,9 @@ $str = $imageurl[0];
     echo "<img src='".$str."' title='".$post->post_title."' alt='".$post->post_title."'width='350' height='496'>"; }else { ?>
   				<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt=" "width='350' height='180' />
 <?php }?>
+<a href="#" data-tooltip="Watch trailer" class="trailer">
+  <svg viewBox="0 0 24 24" class="n-m"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+</a>
 </div>
 <div class="bottomnav">
     
@@ -83,12 +92,10 @@ echo get_the_term_list($post->ID, 'tipe', '', ', ', '');
 </div>
 </div>
 <div class="venser">
-    <div id="lights">
-  <a class="boxcloses" id="boxcloses" onclick="lightbox_close();"></a>
- <iframe class="pv" src="<?php echo get_post_meta(get_the_ID(),'jensan-pv',true)?>" frameborder="0"></iframe>
+<div id="lights">
+<i class="close" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></i>
+ <iframe class="pv" src="<?php echo $video?>" frameborder="0"></iframe>
 </div>
-
-<div id="fade" onClick="lightbox_close();"></div>
 <div class='dbnime'>
 
 
@@ -221,6 +228,7 @@ $seri = get_the_terms($post->ID, 'series');
 $postid = $post->ID;
 if($seri[0]->count>1){
 ?>
+<div class="clear"></div>
 <div class='recomx'>
 <h5><span class="fa fa-link"></span> Related Anime</h5>
 <ul class='recomendedanime'>
@@ -249,36 +257,11 @@ $str = $imageurl[0];
 </ul></div>
 <?php } ?>
 </div>
+<div class="clear"></div>
 <div class="commentar">
 <h5><span><i class="fa fa-comments"></span></i> Comment <span><?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></span></h5>
 <div class="commentwrapper"><ul><?php comments_template(); ?></ul></div>
 </div>
-
-<script>
-    window.document.onkeydown = function(e) {
-  if (!e) {
-    e = event;
-  }
-  if (e.keyCode == 27) {
-    lightbox_close();
-  }
-}
-$("iframe.pv").attr("src", $("iframe.pv").attr("src").replace("autoplay=1", "autoplay=0"));
-function lightbox_open() {
-  $("iframe.pv").attr("src", $("iframe.pv").attr("src").replace("autoplay=0", "autoplay=1"));
-  window.scrollTo(0, 0);
-  document.getElementById('lights').style.display = 'block';
-  document.getElementById('fades').style.display = 'block';
-  lightBoxVideo.play();
-}
-
-function lightbox_close() {
-$('.pv')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'); 
-  document.getElementById('lights').style.display = 'none';
-  document.getElementById('fades').style.display = 'none';
-  lightBoxVideo.pause();
-}
-</script>
 <div style="margin-top:10px;"></div>
 </div>
 <?php get_sidebar(); ?>

@@ -258,21 +258,6 @@ $(document).ready(function() {
     });
 });
 $(document).ready(function() {
-    $(".seasonss").hide();
-    $(".genres").hide();
-    var count = 0;
-    $('.navlist2 a').click(function(event) {
-        event.preventDefault();
-        var text = $(this).attr('data-id');
-        if (text == 'Season') {
-            $(".seasonss").toggle("slow");
-            $(".genres").hide();
-        } else if (text == "Genre") {
-            $(".seasonss").hide();
-            $(".genres").toggle("slow");
-        }
-    });
-
     $('.warnalist li').click(function(event) {
         event.preventDefault();
         var text = $(this).attr('class');
@@ -295,6 +280,43 @@ $(document).ready(function() {
             $(".soralist li").removeClass('active');
             $("li.tvspesial").addClass('active');
         }
+    });
+
+    $(".seasonss").hide();
+    $(".genres").hide();
+    var count = 0;
+    $('.navlist2 a').click(function(event) {
+        event.preventDefault();
+        var text = $(this).attr('data-id');
+        if (text == 'Season') {
+            $(".seasonss").toggle("slow");
+            $(".genres").hide();
+        } else if (text == "Genre") {
+            $(".seasonss").hide();
+            $(".genres").toggle("slow");
+        }
+    });
+    function disableScrolling(){
+    var x=window.scrollX;
+    var y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+}
+
+function enableScrolling(){
+    window.onscroll=function(){};
+}
+    $("#lights").hide();
+    $('a.trailer').click(function(event) {
+        event.preventDefault();
+        $("#lights").toggle("slow");
+        disableScrolling();
+        $('iframe.pv')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+    });
+    $('i.close').click(function(event) {
+        event.preventDefault();
+        $("#lights").toggle("slow");
+        enableScrolling();
+        $('iframe.pv')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
     });
 
 });

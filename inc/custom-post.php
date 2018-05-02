@@ -33,7 +33,7 @@ add_action( 'init', 'anime' );
   		'show_in_rest'       => true,
   		'rest_base'          => 'anime-api',
   		'rest_controller_class' => 'WP_REST_Posts_Controller',
-  		'supports'           => array( 'title', 'editor')
+  		'supports'           => array( 'title', 'editor','comments')
   	);
   
   	register_post_type( 'anime', $args );

@@ -1,15 +1,16 @@
 <?php 
 wp_reset_postdata();
 $EpsNum = get_post_meta( $post->ID, 'jensan-episode', true );
+$finaleps = get_post_meta($post->ID, 'jensan-episodes',true);
 $cekBD = get_post_meta( $post->ID, 'jensan-bd', true );
 $nama = wp_get_object_terms( $post->ID, 'tipe', array( 'fields' => 'names' ) );
 $nama = array_pop($nama);
+$cekEps = ($EpsNum==$finaleps)? true:false;
 ?>
 <div class="item list">
 	<div class="grid-thumb">
 		<a href="
-			<?php echo get_home_url().'/anime/'.$post->post_name; ?>" title="
-			<?php the_title(); ?>">
+			<?php echo get_permalink( $post->ID ); ?>" title="<?php echo get_the_title($post->ID); ?>">
 			<div class="grid-thumbz">
 				<div class="darken"></div>
 				<span class='time'>
@@ -32,10 +33,8 @@ $nama = array_pop($nama);
         </a>
     </div>
 	<div class="text">
-		<a class="judul" href='<?php  echo get_permalink($post->ID); ?>'>
-			<h2 class='grid-tl'>
-				<?php echo $post->post_title; ?>
-			</h2>
+		<a class="judul" href="<?php  echo get_permalink($post->ID); ?>" title="<?php  echo get_the_title($post->ID); ?>" alt="<?php  echo get_the_title($post->ID); ?>" data-wpel-link="internal">
+			<h2 class='grid-tl' itemprop="name"><?php echo get_the_title($post->ID).' Sub Indo '; if($cekEps==true)echo '(End)'; ?></h2>
 			<span class="grid-eps">Ep. <?php echo $EpsNum ?></span>
 		</a>
 	</div>

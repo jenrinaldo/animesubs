@@ -249,7 +249,8 @@ body {
   float: left;
   top: 10px;
   margin: 0px 0px 0 10px;
-  width: 170px;
+  max-width: 170px;
+  width: auto;
   font-size: 19px;
   line-height: inherit;
   font-weight: 900;
@@ -2077,8 +2078,8 @@ textarea {
 }
 
 #lights {
-  display: none;
-  position: absolute;
+  display: flex;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -2086,9 +2087,28 @@ textarea {
   background: rgba(0, 0, 0, 0.85);
   z-index: 1002;
   overflow: visible;
-  padding: 10%;
+  padding: 8%;
 }
+#lights .pv {
+  width:100%;
+  height:auto;
+  max-height: 100%;
+}
+#lights i.close{
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+  opacity: .8;
+  font-size: 2em;
 
+  background: transparent;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: .625rem 0 0;
+  fill: #fff;
+}
 .bgg {
   position: relative;
   margin-bottom: 15px;
@@ -2121,7 +2141,36 @@ textarea {
   border: 2px solid #fff;
   border-radius: 3px;
 }
+.bgg .dbcov a.trailer,.bg-big a.trailer{
+  -webkit-transition: opacity .15s ease;
+    transition: opacity .15s ease;
+    opacity: .8;
+    position: absolute;
+    margin: -2em;
+    top: 50%;
+    right: 50%;
+    background-color: #1b1c1d;
+    border-radius: 4em;
+    height: 4em;
+    width: 4em;
+}
+.bg-big a.trailer {
+  display: none;
+}
+.bgg .dbcov a.trailer>svg,.bg-big a.trailer>svg {
+  fill: #fff;
+  width: 3em;
+  height: 3em;
+  position: absolute;
+  top: .5em;
+  left: .5em;
+  margin-right: 0;
+  overflow: hidden;
+}
 
+.bgg .dbcov a.trailer:hover,.bg-big a.trailer:hover {
+  opacity: 1;
+}
 .bgg .bottomnav {
   width: 100%;
   overflow: hidden;
@@ -2301,14 +2350,18 @@ textarea {
 }
 
 .download h5,.recomx h5,.commentar h5,.info2 h5 {
-  text-align: center;
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 3px solid #4ca4f9;
   position: relative;
   color: #333;
 }
-
+.recomx h5,.commentar h5,.info2 h5 {
+  text-align: left;
+}
+.download h5{
+  text-align: center;
+}
 .download h5 span,.recomx h5 span,.commentar h5 span,.info2 h5 span {
   padding: 5px;
   color: #fff;
@@ -2316,7 +2369,7 @@ textarea {
   border-radius: 3px;
 }
 
-h5.download::after,h5.recomx::after,h5.commentar::after,h5.info2::after {
+h5.download::after,h5.recomx:after,h5.commentar:after,h5.info2:after {
   position: absolute;
   bottom: -3px;
   left: 50%;
@@ -2443,7 +2496,7 @@ width: 100%;
   color:#fff;
   opacity:.8;
   position:absolute;
-  top:6%;
+  top:7%;
   font-size:12px
 }
 .rating,.typerecomended a{
@@ -2873,6 +2926,9 @@ width: 100%;
   .dbtab,
   .genre {
     margin-left: 5px !important;
+  }
+  .bg-big a.trailer {
+    display: flex;
   }
 }
 
