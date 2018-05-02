@@ -831,7 +831,8 @@ input[type="radio"] {
 .slick-prev:before,
 .slick-next:before {
   font-family: "Font Awesome\ 5 Free";
-  font-size: 2rem;
+  font-weight:900;
+  font-size: 1.9rem;
   line-height: 1;
   opacity: 100%;
   color: white;
@@ -929,6 +930,7 @@ input[type="radio"] {
 
 .slick-dots li button:before {
   font-family: "Font Awesome\ 5 Free";
+  font-weight:900;
   font-size: 0.7rem;
   line-height: 20px;
   content: "\f111";
@@ -1918,6 +1920,7 @@ textarea {
 }
 
 .list li.statusBD span {
+  
   display: inline-block;
   padding: 5px;
   border-radius: 3px;
@@ -1930,8 +1933,9 @@ textarea {
 }
 
 .list li.statusBD span::before {
-  content: "\f00c";
+  content: "\f14a";
   font-family: 'Font Awesome\ 5 Free';
+  font-weight:900;
   padding: 3px;
   margin-right: 5px;
   color: #ffffff;

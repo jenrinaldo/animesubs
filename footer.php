@@ -357,7 +357,11 @@ if ($('.top').length) {
         }, 700);
     });
 }
-
 </script>
+<script>
+jQuery('.hover-tipso-tooltip').tipso({
+    tooltipHover: true
+});
+    </script>
 </BODY>
 </html>

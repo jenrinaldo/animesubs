@@ -58,7 +58,7 @@ echo get_the_term_list($post->ID, 'genre', '', ' ', '');
 
 </div>
 <div class="overlay"></div>
-<a href="#" data-tooltip="Watch trailer" class="trailer">
+<a href="#" data-tipso="Watch trailer" class="hover-tipso-tooltip tipso_style trailer" >
   <svg viewBox="0 0 24 24" class="n-m"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
 </a>
 </div>

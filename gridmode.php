@@ -41,7 +41,7 @@ $cekEps = ($EpsNum==$finaleps)? true:false;
     <div class="info">
         <ul>
 		    <li>
-				    <span class="fas fa-clock-o"></span> Date : 	
+				    <span class="fas fa-calendar-alt"></span> Date : 	
 	    		<?php echo get_the_time('d F Y', $post->ID); ?>
 		    </li>
 		    <li>
