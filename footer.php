@@ -260,15 +260,16 @@ $(document).ready(function() {
 $(document).ready(function() {
     $(".seasonss").hide();
     $(".genres").hide();
+    var count = 0;
     $('.navlist2 a').click(function(event) {
         event.preventDefault();
         var text = $(this).attr('data-id');
         if (text == 'Season') {
-            $(".seasonss").show();
+            $(".seasonss").toggle("slow");
             $(".genres").hide();
         } else if (text == "Genre") {
             $(".seasonss").hide();
-            $(".genres").show();
+            $(".genres").toggle("slow");
         }
     });
 

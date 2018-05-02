@@ -218,38 +218,39 @@ foreach($link as $links){
 </div>
 <?php
 $seri = get_the_terms($post->ID, 'series');
+$postid = $post->ID;
 if($seri[0]->count>1){
 ?>
-<div class="recentanime">
-<h5><span class="fa fa-star"></span> Related Anime</h5>
-<ul>
+<div class='recomx'>
+<h5><span class="fa fa-link"></span> Related Anime</h5>
+<ul class='recomendedanime'>
 
-<?php $fix=$seri[0]->slug;$query = new WP_Query( array ( 'posts_per_page' => 10, 'post_type' => 'anime','tax_query' => array(
+<?php $fix=$seri[0]->slug;$query = new WP_Query( array ('post__not_in' => array( $postid, ), 'posts_per_page' => 10, 'post_type' => 'anime','tax_query' => array(
         array(
             'taxonomy' => 'series',
             'field' => 'slug',
             'terms' => $fix,
         ),
-    ) ) ); while($query->have_posts()) : $query->the_post(); ?>
-<li><a href="<?php the_permalink(); ?>">
-<?php
+    ) ) ); while($query->have_posts()) : $query->the_post(); ?><li>
+    <a class='series' rel="<?php the_id();?>" href="<?php the_permalink() ?>" title="<?php the_title(); ?>">
+    <?php
 $imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'depan-image', $post->ID,'thumb'); 
 $imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
 $str = $imageurl[0];
     echo "<img src='".$str."' title='".$post->post_title."' alt='".$post->post_title."'width='350' height='496'>"; }else { ?>
   				<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt=" "width='350' height='180' />
 <?php }?>
-<p><?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?></p>
-</a>
-<div class="typerecent"><?php get_the_terms($post->ID, 'tipe'); ?></div></li>
+    <div class="typerecomended"><?php $meta = get_post_meta( get_the_ID(), 'jensan-status', true ); echo $meta; ?></div>
+    <h4><?php the_title() ?></h4>
+    <div class="rating"><?php $meta = get_the_terms( get_the_ID(), 'tipe'); echo $meta[0]->name; ?></div>
+    </a>
+    </li>
 <?php endwhile; wp_reset_query(); ?>
-</ul>
-<div class="clear"></div>
-</div>
+</ul></div>
 <?php } ?>
 </div>
 <div class="commentar">
-<h5><i class="fa fa-comments"></i> Comment <span><?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></span></h5>
+<h5><span><i class="fa fa-comments"></span></i> Comment <span><?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></span></h5>
 <div class="commentwrapper"><ul><?php comments_template(); ?></ul></div>
 </div>
 
