@@ -211,12 +211,48 @@ foreach($link as $links){
 };
 ?>
 </div>
+<div class="clear"></div>
+<div class="keyword" itemscope itemtype="http://schema.org/CreativeWork">
+<h5><span class="fa fa-key"></span> Keyword</h5>
+<div class="keying"><?php $meta = get_the_title();  echo '<span itemprop="keywords">'.$meta.' Sub Indo</span> , <span itemprop="keywords">'.$meta.' Batch</span> , <span itemprop="keywords">'.$meta.' 480p 720p 360p</span> , <span itemprop="keywords">'.$meta.' Mp4 Sub Indo</span> , <span itemprop="keywords">'.$meta.' MKV Sub Indo</span> , <span itemprop="keywords">'.$meta.' Subtitle Indonesia</span> , <span itemprop="keywords">Download Anime '.$meta.' Subtitle Indonesia'; ?></div>
+</div>
+<?php
+$seri = get_the_terms($post->ID, 'series');
+if($seri[0]->count>1){
+?>
+<div class="recentanime">
+<h5><span class="fa fa-star"></span> Related Anime</h5>
+<ul>
+
+<?php $fix=$seri[0]->slug;$query = new WP_Query( array ( 'posts_per_page' => 10, 'post_type' => 'anime','tax_query' => array(
+        array(
+            'taxonomy' => 'series',
+            'field' => 'slug',
+            'terms' => $fix,
+        ),
+    ) ) ); while($query->have_posts()) : $query->the_post(); ?>
+<li><a href="<?php the_permalink(); ?>">
+<?php
+$imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'depan-image', $post->ID,'thumb'); 
+$imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
+$str = $imageurl[0];
+    echo "<img src='".$str."' title='".$post->post_title."' alt='".$post->post_title."'width='350' height='496'>"; }else { ?>
+  				<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt=" "width='350' height='180' />
+<?php }?>
+<p><?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?></p>
+</a>
+<div class="typerecent"><?php get_the_terms($post->ID, 'tipe'); ?></div></li>
+<?php endwhile; wp_reset_query(); ?>
+</ul>
+<div class="clear"></div>
+</div>
+<?php } ?>
+</div>
 <div class="commentar">
 <h5><i class="fa fa-comments"></i> Comment <span><?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></span></h5>
 <div class="commentwrapper"><ul><?php comments_template(); ?></ul></div>
 </div>
 
-</div>
 <script>
     window.document.onkeydown = function(e) {
   if (!e) {
