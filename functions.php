@@ -275,8 +275,9 @@ function animelist_ajax() {
                         $final = $special;
                         }
                 }
+                $judul = "'".$post->post_title."'";
                 $msg .= '
-                    <li class="'.$final.'"><a class="series" data-id ="'.$ters.'" rel="'.$post->ID.'" href = "' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a>'.$BD.'<i class="fas fa-check"></i></li>
+                    <li class="'.$final.'"><a v-tooltip ="'.$judul.'" class="series" data-id ="'.$ters.'" rel="'.$post->ID.'" href = "' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a>'.$BD.'<i class="fas fa-check"></i></li>
                 ';
                 $ters='';
             endforeach;

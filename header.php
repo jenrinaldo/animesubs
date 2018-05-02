@@ -59,10 +59,13 @@ if (is_home()) {
 <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri() . "/style.css" ?>">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tipso/1.0.8/tipso.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/vue-directive-tooltip@latest/css/index.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tipso/1.0.8/tipso.min.js"></script>
+<script src="https://unpkg.com/popper.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/v-tooltip"></script>
+<script>Vue.use(vueDirectiveTooltip);</script>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -184,10 +187,7 @@ if (is_home()) {
                 <div class="clear"></div>
             </div> 
             <?php }?>
-            <!-- Ongoing Carousel End -->
-            <!-- Content Wrapper -->
-            <div class='wrapper'>
-<script>
+            <script>
     var slug = <?php echo json_encode($nama)?>;
     $(document).ready(
         function() {
@@ -195,3 +195,6 @@ if (is_home()) {
         }
     );
 </script>
+            <!-- Ongoing Carousel End -->
+            <!-- Content Wrapper -->
+            <div class='wrapper'>

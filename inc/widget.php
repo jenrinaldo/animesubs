@@ -220,7 +220,8 @@ $tax_terms = get_terms($taxonomy);
 <?php $i++ ?>
 <?php
 foreach ($tax_terms as $tax_term) {
-echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" title="' . sprintf( __( "View all seri in genre %s" ), $tax_term->name ) . '" ' . '>' . $tax_term->name . '</a></li>';
+    $nama = "'".sprintf( __( "View all seri in season %s" ), $tax_term->name )."'";
+    echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" v-tooltip="' . $nama . '" ' . '>' . $tax_term->name . '</a></li>';
 }
 ?>
 <?php
@@ -268,7 +269,8 @@ $tax_terms = get_terms($taxonomy);
 <?php $i++ ?>
 <?php
 foreach ($tax_terms as $tax_term) {
-echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" title="' . sprintf( __( "View all seri in genre %s" ), $tax_term->name ) . '" ' . '>' . $tax_term->name . '</a></li>';
+    $nama = "'".sprintf( __( "View all seri in tipe %s" ), $tax_term->name )."'";
+echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" v-tooltip="' . $nama . '" ' . '>' . $tax_term->name . '</a></li>';
 }
 ?>
 <?php
@@ -318,7 +320,8 @@ $tax_terms = get_terms($taxonomy);
 <?php $i++ ?>
 <?php
 foreach ($tax_terms as $tax_term) {
-echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" title="' . sprintf( __( "View all seri in genre %s" ), $tax_term->name ) . '" ' . '>' . $tax_term->name . '</a></li>';
+    $nama = "'".sprintf( __( "View all seri in genre %s" ), $tax_term->name )."'";
+echo '<li>' . '<a href="' . esc_attr(get_term_link($tax_term, $taxonomy)) . '" v-tooltip="' . $nama . '" ' . '>' . $tax_term->name . '</a></li>';
 }
 ?>
 <?php

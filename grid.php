@@ -15,7 +15,7 @@
         </a>
     </div>
     <div class="text">
-        <a class="judul" href='<?php  the_permalink(); ?>'>
+        <a v-tooltip.top="'<?php the_title(); ?>'" class="judul" href='<?php  the_permalink(); ?>'>
         <h2 class='grid-tl'> <?php the_title(); ?></h2>
         </a>
     </div>

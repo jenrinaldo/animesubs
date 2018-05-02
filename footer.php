@@ -76,7 +76,26 @@
 </div>
 <?php wp_footer(); ?>
 </div>
+<style>
+  .bg-big { background-image: url(<?php $cover = get_post_meta(get_the_ID(),"jensan-bgcover",true);echo $cover;?>); 
+    height: 300px;
+    overflow: hidden;
+    background-repeat:no-repeat;
+    background-size: cover;
+    position: relative;
+    background-position:50% 5%;
+  }
+  
+</style>
+<script type="text/javascript">
+    $('.minjs').click(function(){
+     $("#alt-title").toggle("slow");
+     $(this).find('i').toggleClass('fas fa-caret-left fas fa-caret-down');
+     return false;
+    
+});
 
+</script>
 <script type="text/javascript">
             var th_name = 'post_title';
             var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
@@ -359,9 +378,14 @@ if ($('.top').length) {
 }
 </script>
 <script>
-jQuery('.hover-tipso-tooltip').tipso({
-    tooltipHover: true
-});
-    </script>
+console.clear()
+
+new Vue({
+  el: 'div.wrapper',
+  data: {
+    message: 'Akanime.net'
+  }
+})
+</script>
 </BODY>
 </html>

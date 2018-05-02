@@ -5,10 +5,10 @@
             <h1>
                 <span>Latest Update</span>
                 <span class="list-style-buttons">
-                    <a href="#" id="list" class="switcher active">
+                    <a href="#" v-tooltip.top="'List View'" id="list" class="switcher active">
                         <i class="fas fa-list"></i>
                     </a>
-                    <a href="#" id="grid" class="switcher">
+                    <a href="#" v-tooltip.top="'Grid View'" id="grid" class="switcher">
                         <i class="fas fa-th"></i>
                     </a>
                 </span>

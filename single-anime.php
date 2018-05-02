@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 <div class="bgg">
-<?php 
-$cover = get_post_meta(get_the_ID(),'jensan-bgcover',true); 
+<?php  
 $season = get_the_term_list($post->ID, 'season', '', ', ', '');
 $episodes = get_post_meta( get_the_ID(), 'jensan-episodes', true );
 $status = get_post_meta( get_the_ID(), 'jensan-status', true );
@@ -20,17 +19,6 @@ $video = str_replace($rep,'',$video);
 ?>
 
 <div class="bg-big" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
-<style>
-  .bg-big { background-image: url(<?php echo $cover;?>); 
-    height: 300px;
-    overflow: hidden;
-    background-repeat:no-repeat;
-    background-size: cover;
-    position: relative;
-    background-position:50% 5%;
-  }
-  
-</style>
 <div class='dbinfo'>
 <div class='dbtab'>
 <h1 itemprop="name"><?php the_title(); ?><a class="minjs" href="#" onclick="toggle_visibility('alt-title');"><i class="fas fa-caret-left" aria-hidden="true"></i></a></h1>
@@ -40,15 +28,7 @@ $video = str_replace($rep,'',$video);
 			    <?php $synonim = get_post_meta( get_the_ID(), 'jensan-synonyms', true ); if($synonim!==""){ echo $synonim." , ";}; ?>
 			    <?php $japan = get_post_meta( get_the_ID(), 'jensan-japanese', true ); if($japan!==""){ echo $japan;}; ?>
 </div>
-<script type="text/javascript">
-    $('.minjs').click(function(){
-     $("#alt-title").toggle("slow");
-     $(this).find('i').toggleClass('fas fa-caret-left fas fa-caret-down');
-     return false;
-    
-});
 
-</script>
 
 </div>
 
@@ -58,7 +38,7 @@ echo get_the_term_list($post->ID, 'genre', '', ' ', '');
 
 </div>
 <div class="overlay"></div>
-<a href="#" data-tipso="Watch trailer" class="hover-tipso-tooltip tipso_style trailer" >
+<a href="#" v-tooltip.top="'Watch trailer'" class="trailer" >
   <svg viewBox="0 0 24 24" class="n-m"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
 </a>
 </div>
@@ -70,7 +50,7 @@ $str = $imageurl[0];
     echo "<img src='".$str."' title='".$post->post_title."' alt='".$post->post_title."'width='350' height='496'>"; }else { ?>
   				<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt=" "width='350' height='180' />
 <?php }?>
-<a href="#" data-tooltip="Watch trailer" class="trailer">
+<a href="#" v-tooltip.top="'Watch trailer'" class="trailer" >
   <svg viewBox="0 0 24 24" class="n-m"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
 </a>
 </div>

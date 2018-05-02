@@ -14,7 +14,7 @@ get_header();
 		<div class="rapi">
 			<div class="venz">
 				<div class="navlist">
-					<a href="#All" data-id='all'>All</a>
+					<a v-tooltip.top ="'All'" href="#All" data-id='all'>All</a>
 					<a href="#." data-id='.'>#</a>
 					<a href="#?" data-id='?'>?</a>
 					<a href="#A" data-id='A'>A</a>
@@ -57,19 +57,19 @@ get_header();
 				</div>
 				<div class="navlist2">
 					<span>View By : </span>
-					<a href="#Season" data-id='Season'>Season</a>
-					<a href="#Genre" data-id='Genre'>Genre</a>
+					<a v-tooltip ="'Season'" href="#Season" data-id='Season'>Season</a>
+					<a v-tooltip ="'Genre'" href="#Genre" data-id='Genre'>Genre</a>
 					<div class="clear"></div>
 				</div>
 				<div class="warnalist">
 					<h4>Penjelasan Warna</h4>
 					<ul>
-						<li class="initv">TV</li>
-						<li class="iniova">OVA</li>
-						<li class="inispecial">Special</li>
-						<li class="inimovie">Movie</li>
-						<li class="initvova">TV + OVA</li>
-						<li class="initvspecial">TV + Special</li>
+						<li v-tooltip ="'TV'" class="initv">TV</li>
+						<li v-tooltip ="'OVA'"class="iniova">OVA</li>
+						<li v-tooltip ="'Special'"class="inispecial">Special</li>
+						<li v-tooltip ="'Movie'"class="inimovie">Movie</li>
+						<li v-tooltip ="'TV + OVA'"class="initvova">TV + OVA</li>
+						<li v-tooltip ="'TV + Special'"class="initvspecial">TV + Special</li>
 					</ul>
 				</div>
 				<div class="seasonss">
