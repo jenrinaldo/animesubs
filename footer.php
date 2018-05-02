@@ -386,6 +386,8 @@ new Vue({
     message: 'Akanime.net'
   }
 })
+
+
 </script>
 </BODY>
 </html>
