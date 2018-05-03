@@ -548,3 +548,17 @@ function sdt_remove_ver_css_js( $src ) {
 		$src = remove_query_arg( 'ver', $src );
 	return $src;
 }
+add_filter( 'rest_authentication_errors', 'gc_filter_incoming_connections' );
+
+function gc_filter_incoming_connections( $errors ){
+
+    $allowed_ips = array( '127.0.0.1' );
+    $request_server = $_SERVER['REMOTE_ADDR'];
+
+    if( ! in_array( $request_server, $allowed_ips )){
+        return new WP_Error( 'forbidden_access', 'Access denied', array( 'status' => 403 ) );
+    }
+
+    return $errors;
+
+}
