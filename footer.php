@@ -378,30 +378,20 @@ if ($('.top').length) {
 }
 </script>
 <script>
-console.clear()
+    var apiURL = '/wp-json/wp/v2/anime-api/?_embed&per_page=6'
 
-new Vue({
-  el: 'div.wrapper',
-  data: {
-    message: 'Akanime.net'
-  }
-})
-</script>
-<script>
-    var apiURL = '/wp-json/wp/v2/anime-api/?_embed&per_page=10'
-
-/**
+/*
  * Posts demo with ability to change author
  */
 
 var posts = new Vue({
 
-	el: '#app',
+	el: 'div.wrapper',
 
 	data: {
-		authors: ['1', '590'],
-		currentAuthor: '1',
-		posts: null
+        id: 1,
+        posts: null,
+        message: 'Akanime.net'
 	},
 
 	created: function() {
@@ -409,22 +399,34 @@ var posts = new Vue({
 	},
 
 	watch: {
-		currentAuthor: 'fetchData'
+        id: 'fetchData'
 	},
 
 	methods: {
 		fetchData: function() {
 			var xhr = new XMLHttpRequest()
 			var self = this
-			xhr.open('GET', apiURL + self.currentAuthor)
+			xhr.open('GET', apiURL)
 			xhr.onload = function() {
 				self.posts = JSON.parse(xhr.responseText)
 				console.log(self.posts[0].link)
 			}
 			xhr.send()
-		}
+        },
+        hasThumbnail: function(post) {
+      if (post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0].source_url && post._embedded['wp:featuredmedia'][0].source_url){
+      return  post._embedded['wp:featuredmedia'][0].source_url;}
+   },
+
+    getThumbnail: function (post) {
+      if (post._embedded['wp:featuredmedia'][0].source_url){
+      return post._embedded['wp:featuredmedia'][0].source_url;
+      }
+    },
 	}
 })
+
 </script>
+
 </BODY>
 </html>

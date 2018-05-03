@@ -65,7 +65,6 @@ if (is_home()) {
 <script src="https://unpkg.com/popper.js"></script>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/v-tooltip"></script>
-<script>Vue.use(vueDirectiveTooltip);</script>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

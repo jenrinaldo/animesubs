@@ -29,19 +29,25 @@
     <div class="rvads"><h1><span>Recomended Anime</span><span><a href=/anime-list/>View More</a></span></h1></div>
     <div class="rapi">
         <div class="venz">
-            <?php
-	            $recent = array(
-		        'post_type' => 'anime',
-		        'showposts' => 6,
-		        'orderby' => 'rand'
-	            );
-                $wp_query = null;
-                $wp_query = new WP_Query();
-                $wp_query->query($recent);
-                while ($wp_query->have_posts()):
-                    $wp_query->the_post();
-                    include (TEMPLATEPATH . '/grid.php');
-                endwhile; ?>
+        <template v-for="post in posts">
+        <div class="gridmode">
+    <div class="grid-thumb">
+        
+        <div class="grid-thumbz">
+        <a v-tooltip.top="post.title.rendered" :href="post.link" v-html="post.title.rendered">
+            <div class="darken"></div>
+            <img src="http://127.0.0.1/wp-content/themes/animesubs/inc/img/noimage.jpg">
+            <svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+        </a>
+        </div>
+    </div>
+    <div class="text">
+        <a v-tooltip.top="post.title.rendered" class="judul" :href="post.link" v-html="post.title.rendered">
+        <h2 class='grid-tl' v-html="post.title.rendered"> </h2>
+        </a>
+    </div>
+</div>
+                </template>
 		</div>
     </div>
     <div class="clear"></div>
