@@ -32,15 +32,15 @@
         <template v-for="post in posts">
         <div class="gridmode">
     <div class="grid-thumb">
-        
+    <a v-tooltip.top="post.title.rendered" :href="post.link">
         <div class="grid-thumbz">
-        <a v-tooltip.top="post.title.rendered" :href="post.link" v-html="post.title.rendered">
             <div class="darken"></div>
-            <img src="http://127.0.0.1/wp-content/themes/animesubs/inc/img/noimage.jpg">
+            <img :src="getThumbnail(post)" v-if="hasThumbnail(post)" class="img-fluid" v-bind:title="post.title.rendered" v-bind:alt="post.title.rendered"/>
+            <div v-else><img src="http://127.0.0.1/wp-content/themes/animesubs/inc/img/noimage.jpg"></div>
             <svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+        </div>
         </a>
         </div>
-    </div>
     <div class="text">
         <a v-tooltip.top="post.title.rendered" class="judul" :href="post.link" v-html="post.title.rendered">
         <h2 class='grid-tl' v-html="post.title.rendered"> </h2>

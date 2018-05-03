@@ -38,14 +38,11 @@ while($recent->have_posts()) : $recent->the_post(); ?>
 <div class='polarpost'>
 <div class='polargambar'>
 <?php
-$post_id = get_the_ID();
-$imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'cover-image', $post_id,'thumb'); 
-$imageurl = wp_get_attachment_image_src($imageid,'thumb'); 
-if($imageid){
-	$str = $imageurl[0];
-	echo "<img src='".$str."' title='";the_title(); echo "' alt='";the_title(); echo "'width='100%' height='auto'>"; } else { ?>
-	<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt="<?php the_title(); ?>"width='100%' height='auto' />
-<?php } ?>
+if ( has_post_thumbnail() ) { ?>
+    <?php the_post_thumbnail('thumb', array( 'title' => get_the_title() )); ?>
+    <?php } else { ?>
+    <img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" />
+    <?php } ?>
 </div>
 <div class='polarco'>
 <div class='polarjdl'><a class='kmz' rel="<?php the_id();?>" href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a></div>
@@ -102,13 +99,11 @@ $i = 0;$popularpost = new WP_Query( array( 'posts_per_page' => $total, 'post_typ
 <div class='polarpost'>
 <div class='polargambar'>
 <?php
-$post_id = get_the_ID();
-$imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'cover-image', $post_id,'thumb'); 
-$imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){
-$str = $imageurl[0];
-    echo "<img src='".$str."' title='";the_title(); echo "' alt='";the_title(); echo "'width='100%' height='auto'>"; }else { ?>
-							<img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" class="img-responsive" alt="<?php the_title(); ?>"width='100%' height='auto' />
-				<?php } ?>
+if ( has_post_thumbnail() ) { ?>
+    <?php the_post_thumbnail('thumb', array( 'title' => get_the_title() )); ?>
+    <?php } else { ?>
+    <img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" />
+    <?php } ?>
 				</div>
 <div class='polarco'>
 <div class='polarjdl'><a class='kmz' rel="<?php the_id();?>" href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a></div>

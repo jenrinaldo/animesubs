@@ -4,12 +4,11 @@
         <div class="grid-thumbz">
             <div class="darken"></div>
             <?php
-            $imageid = MultiPostThumbnails::get_post_thumbnail_id('anime', 'cover-image', $post->ID,'thumb'); 
-            $imageurl = wp_get_attachment_image_src($imageid,'thumb'); if($imageid){ 
-            $str = $imageurl[0];
-            echo "<img src='".$str."' title='".$post->post_title."' alt='".$post->post_title."'width='400' height='225'>"; }else { 
-            echo "<img src='".get_stylesheet_directory_uri()."/inc/img/noimage.jpg' title='".$post->post_title."' alt='".$post->post_title."'width='350' height='180'>"; } 
-            ?>
+            if ( has_post_thumbnail() ) { ?>
+                <?php the_post_thumbnail('thumb', array( 'title' => get_the_title() )); ?>
+                <?php } else { ?>
+                <img src="<?php echo get_template_directory_uri(); ?>/inc/img/noimage.jpg" title="<?php the_title(); ?>" />
+                <?php } ?>
             <svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
         </div>
         </a>
